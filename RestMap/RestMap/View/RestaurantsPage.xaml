@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RestMap.View.RestaurantsPage"
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:sharpnado="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame">
+    <Grid>
+        <CollectionView ItemsSource="{Binding .}" SelectionMode="Single" SelectionChanged="CollectionView_SelectionChanged">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="20" Orientation="Vertical" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.Header>
+                <Grid HeightRequest="120">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label x:Name="title" Margin="32,0,16,16" Text="Cook Book" VerticalOptions="End" VerticalTextAlignment="Center" TextColor="{StaticResource app_title}" FontFamily=".SFUIText-Semibold" FontSize="34" />
+
+                    <Button x:Name="search" Grid.Column="1" Margin="0,0,32,16" FontFamily="Cooking" Text="Search" VerticalOptions="End" CornerRadius="20" HeightRequest="40" WidthRequest="40" FontSize="18" TextColor="{StaticResource app_title}" BackgroundColor="{StaticResource white}" />
+                </Grid>
+            </CollectionView.Header>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Padding="16,0">
+                        <pv:PancakeView CornerRadius="20">
+                            <pv:PancakeView.Shadow>
+                                <pv:DropShadow Color="#000000" Opacity="0.3" Offset="10,10" BlurRadius="10" />
+                            </pv:PancakeView.Shadow>
+
+                            <Grid HeightRequest="480">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="80" />
+                                </Grid.RowDefinitions>
+
+                                <Image Source="{Binding restaurant.featured_image}" Aspect="AspectFill" Grid.RowSpan="2" />
+
+                                <pv:PancakeView Grid.Row="0" VerticalOptions="Start" HeightRequest="120">
+                                    <pv:PancakeView.BackgroundGradientStops>
+                                        <pv:GradientStopCollection>
+                                            <pv:GradientStop Color="#CC000000" Offset="0" />
+                                            <pv:GradientStop Color="Transparent" Offset="2" />
+                                        </pv:GradientStopCollection>
+                                    </pv:PancakeView.BackgroundGradientStops>
+                                </pv:PancakeView>
+
+                                <Label Margin="16,16,0,0" FontSize="20" FontFamily=".SFUIText-Semibold" TextColor="{StaticResource white}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text=""  FontSize="24" />
+                                            <Span Text=" 52" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+                                <sharpnado:MaterialFrame Grid.Row="1" CornerRadius="0" MaterialBlurStyle="Dark" MaterialTheme="AcrylicBlur" />
+
+                                <Label Grid.Row="1" Margin="20" VerticalOptions="Center" Text="{Binding restaurant.name}" FontSize="28" FontFamily=".SFUIText-Semibold" TextColor="{StaticResource white}" />
+                            </Grid>
+
+
+                            </pv:PancakeView>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

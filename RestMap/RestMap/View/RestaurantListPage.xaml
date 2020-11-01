@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:st="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="RestMap.View.RestaurantListPage">
+
+    <Grid BackgroundColor="#F9F9F9" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Grid.ColumnSpan="3" Text="Search" WidthRequest="200" ImageSource="loupe.png" HorizontalOptions="Center" HeightRequest="40" CornerRadius="5" BackgroundColor="Red" TextColor="White"></Button>
+            </Grid>
+
+        <StackLayout Grid.Row="1">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,10,0,0">
+                <Picker Title="Select Filter"></Picker>
+                <Picker Title="Select Order"/>
+                <Button Text="Filter" HorizontalOptions="End"></Button>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Image Source="pin.png" HeightRequest="45"/>
+                <Label x:Name="LocationLabel" Text="Warszawa" TextColor="#515151" FontSize="18" Margin="0,10,0,0"/>
+            </StackLayout>
+            <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                <StackLayout Orientation="Horizontal" Spacing="10" BindableLayout.ItemsSource="{Binding FilterList}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <pv:PancakeView CornerRadius="15" Margin="5,10,0,10" HasShadow="True" BackgroundColor="White">
+                                <pv:PancakeView.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                </pv:PancakeView.GestureRecognizers>
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal">
+                                            <VisualState.Setters>
+                                               
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState x:Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundGradientStops">
+                                                    <Setter.Value>
+                                                        <pv:GradientStopCollection>
+                                                            <pv:GradientStop Color="#FF4157" Offset="0"/>
+                                                            <pv:GradientStop Color="#FF4359" Offset="0.5"/>
+                                                            <pv:GradientStop Color="#FE93C5" Offset="1"/>
+                                                        </pv:GradientStopCollection>
+                                                    </Setter.Value>
+                                                </Setter>
+                                                <Setter Property="BackgroundGradientAngle" Value="270"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <!--<Label x:Name="FilterSettingsLabel" Padding="20,5" Text="{Binding FilterName}" TextColor="#707070" FontSize="15"/>-->
+                            </pv:PancakeView>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+        <ScrollView Grid.Row="2" Margin="0,10" VerticalScrollBarVisibility="Never">
+            
+            <StackLayout BackgroundColor="Transparent" BindableLayout.ItemsSource="{Binding .}">
+                <ListView  x:Name="SearchListView"></ListView>
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <pv:PancakeView HeightRequest="220" Margin="5,10" CornerRadius="5" HasShadow="True" BackgroundColor="White">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+                                </Grid.GestureRecognizers>
+                                <Image HeightRequest="135" Aspect="AspectFill" Source="{Binding restaurant.featured_image}" />
+                                <!--<Image Source="{Binding restaurant.featured_image}" HorizontalOptions="End" Margin="12" HeightRequest="16" VerticalOptions="Start"/>-->
+                                <Grid VerticalOptions="End" Margin="15">
+                                    <pv:PancakeView CornerRadius="15" Padding="15,5" BackgroundColor="Black" Opacity="0.5" HorizontalOptions="Start" VerticalOptions="Start">
+                                        <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Start">
+                                            <Image HeightRequest="12" WidthRequest="12" Source="location.png" VerticalOptions="Center" HorizontalOptions="Start"/>
+                                            <Label Text="{Binding restaurant.location.locality_verbose}" FontSize="12" TextColor="White" VerticalOptions="Center"/>
+                                        </StackLayout>
+                                    </pv:PancakeView>
+                                </Grid>
+                                <StackLayout Grid.Row="1" Spacing="5" Margin="20,5">
+                                    <Label Text="{Binding restaurant.name}" FontAttributes="Bold" FontSize="15" TextColor="#515151"/>
+                                    <Label Text="{Binding restaurant.cuisines}" FontSize="14" TextColor="#515151"/>
+                                    <StackLayout Orientation="Horizontal" Spacing="15">
+                                        <StackLayout Orientation="Horizontal" Spacing="8">
+                                            <Image WidthRequest="18" HeightRequest="16" Source="money.png"/>
+                                            <Label Text="{Binding restaurant.average_cost}" FontSize="13" TextColor="#707070"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" Spacing="8">
+                                            <Image WidthRequest="18" HeightRequest="16" Source="star_rate.png"/>
+                                            <Label Text="{Binding restaurant.user_rating.rate}" FontSize="13" TextColor="#707070"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Grid>
+                        </pv:PancakeView>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

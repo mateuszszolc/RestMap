@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RestMap.View.RestaurantDetailsPage"
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+            
+    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <!--Obraz restauracji-->
+        <!--Source thumb-->
+        <Image Aspect="AspectFill" Source="{Binding featured_image}" Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+   
+        <pv:PancakeView x:Name="DetailsView" Grid.Row="1" CornerRadius="30,30,0,0" Padding="30,30,30,0" Margin="0,-30,0,0" 
+                        BackgroundColor="White" VerticalOptions="FillAndExpand">
+            <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
+                <StackLayout Spacing="15" HorizontalOptions="FillAndExpand">
+                    <Grid HorizontalOptions="FillAndExpand">
+                        <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="FillAndExpand">
+                            <Image HeightRequest="25" WidthRequest="25" Source="location_pin.png" VerticalOptions="Center" HorizontalOptions="Start"/>
+                            
+                            <!--Adres-->
+                            <Label Text="{Binding location.address}" FontSize="15" FontAttributes="Bold" TextColor="Black" FontFamily="ThemeFontRegular" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        </StackLayout>
+                        <!--<ImageButton BackgroundColor="Transparent" Aspect="Fill" HeightRequest="30" WidthRequest="30" Source="direction.png" VerticalOptions="Center" HorizontalOptions="End"/>-->
+                    </Grid>
+                    <StackLayout Grid.Row="1" Spacing="15" >
+                        
+                        <!--Nazwa-->
+                        <!--Kuchnie-->
+                            <Label Text="{Binding name}" FontSize="20" FontFamily="ThemeFontBold" FontAttributes="Bold" TextColor="#515151"/>
+                        <!--<StackLayout Orientation="Horizontal" Spacing="15">
+                            <StackLayout Orientation="Horizontal" Spacing="10">
+                                <Image WidthRequest="16" Source="star_rate.png"/>
+                                
+                                --><!--Gdzieś kuchnie dać-->
+                                <!--Ocena
+                                Cena za dwóch--><!--
+                                <Label Text="{Binding user_rating.rate}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#707070"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Spacing="10">
+                                <Image WidthRequest="16" Source="money.png"/>
+                                <Label Text="{Binding average_cost}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#707070"/>
+                            </StackLayout>
+                        </StackLayout>-->
+                    </StackLayout>
+                    <BoxView HeightRequest="1" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="#E4E4E4"/>
+                    <StackLayout Orientation="Horizontal" Spacing="30" HorizontalOptions="Center">
+                        <StackLayout>
+                            <pv:PancakeView BackgroundColor="#E9E9E9" HeightRequest="50" WidthRequest="50" CornerRadius="30" HorizontalOptions="Center">
+                                <Image WidthRequest="16" HeightRequest="16" Source="telephone.png" HorizontalOptions="Center" VerticalOptions="Center">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" NumberOfTapsRequired="1"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </pv:PancakeView>
+                            <Label Text="Call" TextColor="#8D8D8D" FontSize="14" FontFamily="ThemeFontMedium" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                        <StackLayout>
+                            <pv:PancakeView BackgroundColor="#E9E9E9" HeightRequest="50" WidthRequest="50" CornerRadius="30" HorizontalOptions="Center">
+                                <Image WidthRequest="16" HeightRequest="16" Source="route.png" HorizontalOptions="Center" VerticalOptions="Center">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1" NumberOfTapsRequired="1"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                
+                            </pv:PancakeView>
+                            <Label Text="Map" TextColor="#8D8D8D" FontSize="14" FontFamily="ThemeFontMedium" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                        <StackLayout>
+                            <pv:PancakeView BackgroundColor="#E9E9E9" HeightRequest="50" WidthRequest="50" CornerRadius="30" HorizontalOptions="Center">
+                                <Image WidthRequest="16" HeightRequest="16" Source="website.png" HorizontalOptions="Center" VerticalOptions="Center">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2" NumberOfTapsRequired="1"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </pv:PancakeView>
+                            <Label Text="Website" TextColor="#8D8D8D" FontSize="14" FontFamily="ThemeFontMedium" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <BoxView HeightRequest="1" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="#E4E4E4"/>
+                    <Label Text="D E T A I L S" FontSize="17" FontFamily="ThemeFontBold" FontAttributes="Bold" TextColor="#515151"/>
+                    <Label Text="CUISINES"  FontSize="15" FontFamily="ThemeFontRegular" TextColor="#c1c1c1"/>
+                    <!--<Label Text="{Binding cuisines}" FontSize="15" FontFamily="ThemeFontBold"/>-->
+                    <!--<ScrollView Orientation="Vertical" HorizontalScrollBarVisibility="Never">-->
+                        <StackLayout Orientation="Vertical"  BindableLayout.ItemsSource="{Binding cuisinesList}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Label x:Name="FilterSettingsLabel"  Text="{Binding }" TextColor="#ff4359" FontAttributes="Bold" FontSize="15"/>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                    <!--</ScrollView>-->
+                    <Label Text="OPENING HOURS"  FontSize="15" FontFamily="ThemeFontRegular" TextColor="#c1c1c1"/>
+                    <Label Text="{Binding timings}"  FontSize="15" FontFamily="ThemeFontRegular" TextColor="#000000"/>
+                    <Label Text="AVERANGE PRICE FOR TWO"  FontSize="15" FontFamily="ThemeFontRegular" TextColor="#c1c1c1"/>
+                    <Label Text="{Binding average_cost}"  FontSize="15" FontFamily="ThemeFontRegular" TextColor="#000000"/>
+                    <Label Text="HIGHLIGHTS"  FontSize="15" FontFamily="ThemeFontRegular" TextColor="#c1c1c1"/>
+                    <StackLayout Orientation="Vertical"  BindableLayout.ItemsSource="{Binding highlights}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Orientation="Horizontal">
+                                    <Image HeightRequest="18" WidthRequest="18" Source="option.png"/>
+                                        <Label x:Name="FilterSettingsLabel"  Text="{Binding }" TextColor="#000000" FontSize="15"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </pv:PancakeView>
+                    </Grid>
+</ContentPage>
