@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RestMap.View.AddCommentPage">
+
+    <Grid>
+            <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Editor AutoSize="TextChanges" Text="{Binding RestaurantCommentContent, Mode=TwoWay}" Placeholder="Add Comment..." MaxLength="512" IsSpellCheckEnabled="True" IsTextPredictionEnabled="True"/>
+                <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="End">
+            <Button Command="{Binding AddCommentCommand}" CommandParameter="{Binding RestaurantComment}" Grid.Row="1" VerticalOptions="End" CornerRadius="10" Text="Add Comment" BackgroundColor="Red" TextColor="White" Margin="10,10,10,10">
+            </Button>
+        </StackLayout>
+    </Grid>
+
+</ContentPage>

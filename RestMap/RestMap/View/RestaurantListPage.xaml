@@ -15,21 +15,22 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-            <Grid>
+            <Grid HeightRequest="50">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Grid.ColumnSpan="3" Text="Search" WidthRequest="200" ImageSource="loupe.png" HorizontalOptions="Center" HeightRequest="40" CornerRadius="5" BackgroundColor="Red" TextColor="White"></Button>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Grid.ColumnSpan="2" Text="Search" WidthRequest="250"  ImageSource="loupe.png" HorizontalOptions="Center" CornerRadius="5" BackgroundColor="Red" TextColor="White" Clicked="Button_OnClicked"></Button>
+            <Button ImageSource="settings.png" Clicked="Settings_OnClicked"  WidthRequest="70" Grid.Column="2" HorizontalOptions="End" VerticalOptions="Center" BackgroundColor="DeepSkyBlue" CornerRadius="5"></Button>
             </Grid>
 
         <StackLayout Grid.Row="1">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,10,0,0">
+            <!--<StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,10,0,0">
                 <Picker Title="Select Filter"></Picker>
                 <Picker Title="Select Order"/>
                 <Button Text="Filter" HorizontalOptions="End"></Button>
-            </StackLayout>
+            </StackLayout>-->
             <StackLayout Orientation="Horizontal">
                 <Image Source="pin.png" HeightRequest="45"/>
                 <Label x:Name="LocationLabel" Text="Warszawa" TextColor="#515151" FontSize="18" Margin="0,10,0,0"/>
@@ -88,6 +89,7 @@
                                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
                                 </Grid.GestureRecognizers>
                                 <Image HeightRequest="135" Aspect="AspectFill" Source="{Binding restaurant.featured_image}" />
+                                <!--<Image HeightRequest="16" HorizontalOptions="End" Margin="12" VerticalOptions="Start" Source="lock.png"/>-->
                                 <!--<Image Source="{Binding restaurant.featured_image}" HorizontalOptions="End" Margin="12" HeightRequest="16" VerticalOptions="Start"/>-->
                                 <Grid VerticalOptions="End" Margin="15">
                                     <pv:PancakeView CornerRadius="15" Padding="15,5" BackgroundColor="Black" Opacity="0.5" HorizontalOptions="Start" VerticalOptions="Start">

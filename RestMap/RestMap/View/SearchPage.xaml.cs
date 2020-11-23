@@ -25,10 +25,11 @@ namespace RestMap.View
         }
 
 
-        private void SearchListView_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void SearchListView_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             LocationSuggestion locationSuggestion = e.SelectedItem as LocationSuggestion;
-            
+
+            await Navigation.PushAsync(new RestaurantListPage(locationSuggestion));
         }
     }
 }

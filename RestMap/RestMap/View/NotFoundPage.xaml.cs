@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RestMap.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,14 +13,12 @@ namespace RestMap.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NotFoundPage : ContentPage
     {
+        private readonly NotFoundViewModel _notFoundViewModel;
         public NotFoundPage()
         {
             InitializeComponent();
-        }
-
-        private async void TapGestureRecognizer_OnTapped(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new SearchPage());
+            _notFoundViewModel = new NotFoundViewModel();
+            BindingContext = _notFoundViewModel;
         }
     }
 }

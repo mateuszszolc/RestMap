@@ -52,7 +52,12 @@ C:\Users\mateu\Documents\VII Semestr\Praca\RestMap\RestMap\RestMap\obj\Debug\net
 C:\Users\mateu\Documents\VII Semestr\Praca\RestMap\RestMap\RestMap\obj\Debug\netstandard2.0\View\HomePage.xaml.g.cs
 C:\Users\mateu\Documents\VII Semestr\Praca\RestMap\RestMap\RestMap\obj\Debug\netstandard2.0\View\SearchPage.xaml.g.cs
 C:\Users\mateu\Documents\VII Semestr\Praca\RestMap\RestMap\RestMap\obj\Debug\netstandard2.0\View\PhotosPage.xaml.g.cs
+C:\Users\mateu\Documents\VII Semestr\Praca\RestMap\RestMap\RestMap\obj\Debug\netstandard2.0\View\NotFoundPage.xaml.g.cs
+C:\Users\mateu\Documents\VII Semestr\Praca\RestMap\RestMap\RestMap\obj\Debug\netstandard2.0\View\MenuPage.xaml.g.cs
+C:\Users\mateu\Documents\VII Semestr\Praca\RestMap\RestMap\RestMap\obj\Debug\netstandard2.0\View\RestaurantDetailsHomePage.xaml.g.cs
+C:\Users\mateu\Documents\VII Semestr\Praca\RestMap\RestMap\RestMap\obj\Debug\netstandard2.0\View\ReviewsPage.xaml.g.cs
+C:\Users\mateu\Documents\VII Semestr\Praca\RestMap\RestMap\RestMap\obj\Debug\netstandard2.0\RestMap.csprojAssemblyReference.cache
 C:\Users\mateu\Documents\VII Semestr\Praca\RestMap\RestMap\RestMap\obj\Debug\netstandard2.0\RestMap.csproj.CoreCompileInputs.cache
 C:\Users\mateu\Documents\VII Semestr\Praca\RestMap\RestMap\RestMap\obj\Debug\netstandard2.0\XamlC.stamp
-C:\Users\mateu\Documents\VII Semestr\Praca\RestMap\RestMap\RestMap\obj\Debug\netstandard2.0\View\NotFoundPage.xaml.g.cs
-C:\Users\mateu\Documents\VII Semestr\Praca\RestMap\RestMap\RestMap\obj\Debug\netstandard2.0\RestMap.csprojAssemblyReference.cache
+C:\Users\mateu\Documents\VII Semestr\Praca\RestMap\RestMap\RestMap\obj\Debug\netstandard2.0\View\AddCommentPage.xaml.g.cs
+C:\Users\mateu\Documents\VII Semestr\Praca\RestMap\RestMap\RestMap\obj\Debug\netstandard2.0\View\SettingsPage.xaml.g.cs

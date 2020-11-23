@@ -23,7 +23,7 @@ namespace RestMap.View
 
         private void LoginButton_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new RestaurantListPage());
+            //Navigation.PushAsync(new RestaurantListPage());
         }
     }
 }

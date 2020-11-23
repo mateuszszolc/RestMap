@@ -3,9 +3,12 @@ using RestMap.Model.Zomato.Category;
 using RestMap.Model.Zomato.Cities;
 using RestMap.Model.Zomato.Collections;
 using RestMap.Model.Zomato.Cuisines;
+using RestMap.Model.Zomato.Daily_Menu;
 using RestMap.Model.Zomato.Establishments;
 using RestMap.Model.Zomato.Geocode;
 using RestMap.Model.Zomato.Locations;
+using RestMap.Model.Zomato.Reviews;
+using RestMap.Model.Zomato.Search;
 using RestMap.Settings;
 using System;
 using System.Collections.Generic;
@@ -63,6 +66,12 @@ namespace RestMap.Model.Zomato.API_Service
                 (string.Format(ZomatoSettings.CUISINES_ENDPOINT + "?city_id={0}", id));
         }
 
+        public async Task<DailyMenusContainer> GetDailyMenusAsync(string id = null)
+        {
+            return await _zomatoClient.GetAsync<DailyMenusContainer>(
+                string.Format(ZomatoSettings.DAILYMENU_URL + "?res_id={0}", id));
+        }
+
         public async Task<EstablishmentsContainer> GetEstablishmentsByCityCoordinates(string lat = null, string lon = null)
         {
             return await _zomatoClient.GetAsync<EstablishmentsContainer>
@@ -91,6 +100,18 @@ namespace RestMap.Model.Zomato.API_Service
         {
             return await _zomatoClient.GetAsync<Restaurant.RestaurantContainer>
                 (string.Format(ZomatoSettings.RESTAURANT_DETAILS_URL + "?res_id={0}", id));
+        }
+
+        public async Task<RestaurantsContainer> GetRestaurantsByChoosenLocationAsync(string entityId = null, string entityType = null)
+        {
+            return await _zomatoClient.GetAsync<RestaurantsContainer>
+                (string.Format(ZomatoSettings.SEARCH_URL + "?entity_id={0}&entity_type={1}", entityId, entityType));
+        }
+
+        public async Task<UserReviewsContainer> GetReviewsAsync(string id = null, string count = null)
+        {
+            return await _zomatoClient.GetAsync<UserReviewsContainer>(
+                string.Format(ZomatoSettings.REVIEWS_URL + "?res_id={0}&count={1}", id, count));
         }
     }
 }

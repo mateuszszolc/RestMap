@@ -8,7 +8,7 @@
         <Label Text="Try to select the location manually." HorizontalOptions="Center"></Label>
         <Label Margin="0,10,0,0" Text="Set location" HorizontalOptions="Center" TextColor="#f85c4d" FontAttributes="Bold" FontSize="15">
             <Label.GestureRecognizers>
-                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_OnTapped"></TapGestureRecognizer>
+                <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding NavigateToSearchPageCommand}"></TapGestureRecognizer>
             </Label.GestureRecognizers>
         </Label>
     </StackLayout>

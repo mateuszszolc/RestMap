@@ -1,7 +1,6 @@
 FFImageLoading.Forms.Platform
 FFImageLoading.Platform
-FFImageLoading.Svg.Forms
-FFImageLoading.Svg.Platform
+FFImageLoading.Transformations
 FormsViewGroup
 Microsoft.Azure.Mobile.Client
 PCLCrypto
@@ -13,7 +12,6 @@ Plugin.SharedTransitions
 Sharpnado.MaterialFrame.Android
 Sharpnado.Presentation.Forms.Droid
 Sharpnado.Shadows.Android
-SkiaSharp
 Xamarin.Android.Arch.Core.Common
 Xamarin.Android.Arch.Core.Runtime
 Xamarin.Android.Arch.Lifecycle.Common

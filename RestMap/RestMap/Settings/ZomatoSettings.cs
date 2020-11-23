@@ -27,5 +27,11 @@ namespace RestMap.Settings
         public static readonly string RESTAURANT_DETAILS_URL = "restaurant";
 
         public static readonly string LOCATION_SUGGESTION_URL = "locations";
+
+        public static readonly string SEARCH_URL = "search";
+
+        public static readonly string DAILYMENU_URL = "dailymenu";
+
+        public static readonly string REVIEWS_URL = "reviews";
     }
 }

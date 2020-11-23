@@ -48,8 +48,7 @@ namespace RestMap.Model.Zomato.Restaurant
 
         public List<string> cuisinesList => cuisines.Split(',').ToList().Select(x => x.Trim()).ToList();
 
-            
-
+        
         public string average_cost => average_cost_for_two.ToString() + " " + currency;
 
        

@@ -1,5 +1,4 @@
 ﻿using Plugin.Geolocator;
-using Plugin.Geolocator.Abstractions;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 using System;
@@ -11,7 +10,9 @@ using System.Threading.Tasks;
 using RestMap.Model.Zomato;
 using RestMap.Model.Zomato.Geocode;
 using Xamarin.Forms;
+using Xamarin.Forms.Maps;
 using Xamarin.Forms.Xaml;
+using Position = Plugin.Geolocator.Abstractions.Position;
 
 namespace RestMap.View
 {
@@ -80,8 +81,8 @@ namespace RestMap.View
 
             GetLocation();
 
-            SetNearbyRestaurants();
-           // nearbyRestaurant = await NearbyRestaurantsService.GetRestaurants();
+            
+           SetNearbyRestaurants();
 
             //DisplayPinsInMap(nearbyRestaurant);
         }
@@ -106,11 +107,22 @@ namespace RestMap.View
                       
                     };
 
+                    pin.Clicked += Pin_Clicked;
+
                     LocationMap.Pins.Add(pin);
                 }
                 catch(NullReferenceException){}
                 catch(Exception exception){}
             }
+        }
+
+        private async void Pin_Clicked(object sender, EventArgs e)
+        {
+            var selectedPin = sender as Pin;
+
+            var selectedRestaurant = App.NearbyRestaurants.FirstOrDefault(x => !(selectedPin is null) && (x.restaurant.location.address == selectedPin.Address) && (x.restaurant.name == selectedPin.Label));
+
+            await Navigation.PushAsync(new RestaurantDetailsPage(selectedRestaurant.restaurant.id));
         }
 
         protected async override void OnDisappearing()
@@ -154,6 +166,8 @@ namespace RestMap.View
                  App.NearbyRestaurants = await NearbyRestaurantsService.GetRestaurants(position.Latitude.ToString(CultureInfo.InvariantCulture),
                      position.Longitude.ToString(CultureInfo.InvariantCulture));
 
+                // App.NearbyRestaurants = await NearbyRestaurantsService.GetRestaurants();
+
                  if (App.NearbyRestaurants.Count > 0)
                  {
                      DisplayPinsInMap(App.NearbyRestaurants);
@@ -162,8 +176,14 @@ namespace RestMap.View
                  {
                      await DisplayAlert("Info",
                          "There are currently no restaurants in your current location. Choose another city.", "Ok");
+                     await Navigation.PushAsync(new NotFoundPage());
                  }
             }
+        }
+
+        private async void Button_OnClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SearchPage());
         }
     }
 }

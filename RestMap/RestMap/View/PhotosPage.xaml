@@ -1,9 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="RestMap.View.PhotosPage">
-    <StackLayout>
-        <Button Text="Select image" Clicked="Button_OnClicked"></Button>
-        <Image x:Name="SelectedImage"></Image>
-    </StackLayout>
+             x:Class="RestMap.View.PhotosPage"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations">
+    <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
+        <StackLayout Orientation="Vertical" Padding="10">
+            <Label Text="{Binding RestaurantContainer.name}" TextColor="Black" FontAttributes="Bold" FontSize="22"></Label>
+            <StackLayout Orientation="Horizontal">
+                <Label FontAttributes="Bold" FontSize="14" Margin="0, 5, 0, 0" Text="Average Cost For Two:"></Label>
+                <Label Margin="0, 5, 0, 0" Text="{Binding RestaurantContainer.average_cost}"></Label>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label FontAttributes="Bold" FontSize="14"  Margin="0, 5, 0, 0" Text="Address:"></Label>
+                <Label Margin="0, 5, 0, 0" Text="{Binding RestaurantContainer.location.locality_verbose}"></Label>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label FontAttributes="Bold" FontSize="14" Margin="0, 5, 0, 0" Text="Phone number:"></Label>
+                <Label Margin="0, 5, 0, 0" Text="{Binding RestaurantContainer.phone_numbers}"></Label>
+            </StackLayout>
+            <BoxView Margin="0, 5, 0, 0" HeightRequest="1" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="#E4E4E4"/>
+            <StackLayout Orientation="Horizontal">
+                <Button Margin="0, 5, 0, 0" Clicked="ShowMorePhotos_Clicked" Text="Show More Photos" BackgroundColor="SeaGreen" CornerRadius="10"></Button>
+            </StackLayout>
+            <BoxView Margin="0, 5, 0, 0" HeightRequest="1" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="#E4E4E4"/>
+            <Label Margin="0, 5, 0, 0" Text="Photos" FontSize="20" FontAttributes="Bold" ></Label>
+            <StackLayout Orientation="Horizontal">
+                <Button Margin="0,5,0,0" Text="Select image" Clicked="SelectImage_OnClicked" CornerRadius="10" BackgroundColor="SandyBrown"></Button>
+            </StackLayout>
+            <StackLayout BindableLayout.ItemsSource="{Binding RestaurantImages}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <forms:CachedImage x:Name="CachedImage" Aspect="AspectFit" HeightRequest="300" WidthRequest="300" Source="{Binding ImageUrl}">
+                                 <forms:CachedImage.Transformations>
+                                    <transformations:RoundedTransformation Radius="30"></transformations:RoundedTransformation>
+                                 </forms:CachedImage.Transformations>
+                            </forms:CachedImage>
+                        </StackLayout>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

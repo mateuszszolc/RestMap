@@ -6,9 +6,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="RestMap.View.MapPage">
-    <maps:Map x:Name="LocationMap"
-              HorizontalOptions="FillAndExpand"
-              VerticalOptions="FillAndExpand"
-              MapType="Hybrid"
-              IsShowingUser="True"/>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+            
+        <maps:Map x:Name="LocationMap"
+                  HorizontalOptions="FillAndExpand"
+                  VerticalOptions="FillAndExpand"
+                  MapType="Hybrid"
+                  IsShowingUser="True"
+                  Grid.RowSpan="3"/>
+        <Button Grid.Row="1" Margin="0,0,0,0" Text="Search" WidthRequest="200"  ImageSource="loupe.png" HorizontalOptions="Center" HeightRequest="40" CornerRadius="5" BackgroundColor="Red" TextColor="White" Clicked="Button_OnClicked"></Button>
+    </Grid>
 </ContentPage>

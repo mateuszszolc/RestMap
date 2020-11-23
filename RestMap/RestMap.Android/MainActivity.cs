@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using FFImageLoading.Forms.Platform;
 using Microsoft.WindowsAzure.MobileServices;
 using Plugin.CurrentActivity;
 using Plugin.Permissions;
@@ -24,6 +25,7 @@ namespace RestMap.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            CachedImageRenderer.Init(true);
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
             Xamarin.FormsMaps.Init(this, savedInstanceState);
             CurrentPlatform.Init();

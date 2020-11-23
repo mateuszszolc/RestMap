@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure.MobileServices;
 using RestMap.Helpers;
 using Xamarin.Forms;
 
@@ -105,6 +106,35 @@ namespace RestMap.Model.Application
         {
             appUser.Password = PasswordHelper.Hash(appUser.Password);
             await App.MobileServiceClient.GetTable<ApplicationUser>().InsertAsync(appUser);
+        }
+
+        public static async Task<ApplicationUser> GetApplicationUserById(string id)
+        {
+            //ApplicationUser appUser =  (await App.MobileServiceClient.GetTable<ApplicationUser>()
+            //        .Where(x => x.Id == id)
+            //        .ToListAsync())
+            //        .FirstOrDefault();
+            var applicationUserTable = App.MobileServiceClient.GetTable<ApplicationUser>();
+            IMobileServiceTableQuery<ApplicationUser> query = applicationUserTable.CreateQuery()
+                .Select(x => x)
+                .Where(x => x.Id == id);
+
+            var user = (await query.ToListAsync()).FirstOrDefault();
+
+            return user;
+        }
+
+        public static async Task<string> GetUsernameByUserId(string id)
+        {
+            var applicationUSerTable = App.MobileServiceClient.GetTable<ApplicationUser>();
+
+            IMobileServiceTableQuery<string> query = applicationUSerTable.CreateQuery()
+                .Where(x => x.Id == id)
+                .Select(x => x.Username);
+
+            var username = (await query.ToListAsync()).FirstOrDefault();
+
+            return username;
         }
     }
 }

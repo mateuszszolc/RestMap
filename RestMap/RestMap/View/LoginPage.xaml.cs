@@ -21,14 +21,14 @@ namespace RestMap.View
 
         private async void Button_OnClicked(object sender, EventArgs e)
         {
-           // bool login = await ApplicationUser.Login(EmailEntry.Text, PasswordEntry.Text);
+            bool login = await ApplicationUser.Login(EmailEntry.Text, PasswordEntry.Text);
 
-            //if(login)
-             await Navigation.PushAsync(new RestaurantListPage());
-            //else
-            //{
-            //    await DisplayAlert("Information", "Logging has failed", "Ok");
-           // }
+            if (login)
+                await Navigation.PushAsync(new MapPage());
+            else
+            {
+                await DisplayAlert("Information", "Logging has failed", "Ok");
+            }
         }
 
       

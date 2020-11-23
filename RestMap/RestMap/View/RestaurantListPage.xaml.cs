@@ -6,7 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using RestMap.Model.Zomato.Locations;
+using RestMap.Model.Zomato.Search;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -23,21 +24,26 @@ namespace RestMap.View
         ZomatoService zomatoService = new ZomatoService(zomatoClient);
         private List<NearbyRestaurant> nearbyRestaurants = new List<NearbyRestaurant>();
 
+        private LocationSuggestion _locationSuggestion;
        
         
 
-        public RestaurantListPage()
+        public RestaurantListPage(LocationSuggestion locationSuggestion)
         {
             InitializeComponent();
+            _locationSuggestion = locationSuggestion;
+            LocationLabel.Text = $"{locationSuggestion.city_name}, {locationSuggestion.country_name}";
             //GetRestaurants();
         }
+
 
         protected override async void OnAppearing()
         {
             base.OnAppearing();
             //GetRestaurants();
             if (true)
-                BindingContext = await NearbyRestaurantsService.GetRestaurants();
+                BindingContext = await SearchService.SearchRestaurantsAsync(_locationSuggestion.entity_id.ToString(),
+                    _locationSuggestion.entity_type);
             //BindingContext = App.NearbyRestaurants;
             else
                 await Navigation.PushAsync(new NotFoundPage());
@@ -53,7 +59,7 @@ namespace RestMap.View
              nearbyRestaurants = locationDetailsContainer.nearby_restaurants;            
          }
 
-        public async void SetRestaurants()
+        public void SetRestaurants()
         {
             //nearbyRestaurants = await GetRestaurants();
         }
@@ -84,12 +90,23 @@ namespace RestMap.View
         
 
          private async void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
-          {
-            string property = ((sender as Xamarin.Forms.View).BindingContext as NearbyRestaurant).restaurant.id;
+         {
+             string property =
+                 ((sender as Xamarin.Forms.View).BindingContext as Model.Zomato.Search.RestaurantContainer).restaurant
+                 .id;
             await Navigation.PushAsync(new RestaurantDetailsPage(property));
           }
 
-        
+
+         private async void Button_OnClicked(object sender, EventArgs e)
+         {
+             await Navigation.PushAsync(new SearchPage());
+         }
+
+         private async void Settings_OnClicked(object sender, EventArgs e)
+         {
+            await Navigation.PushAsync(new SettingsPage());
+         }
     }
    
 }

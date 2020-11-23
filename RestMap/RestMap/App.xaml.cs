@@ -1,25 +1,31 @@
 ﻿using Plugin.SharedTransitions;
 using System;
 using System.Collections.Generic;
+using FFImageLoading.Exceptions;
 using Microsoft.WindowsAzure.MobileServices;
 using RestMap.Model.Application;
 using RestMap.Model.Zomato.Geocode;
+using RestMap.Model.Zomato.Search;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using RestaurantContainer = RestMap.Model.Zomato.Restaurant.RestaurantContainer;
 
 namespace RestMap
 {
     public partial class App : Application
     {
-        public static List<NearbyRestaurant> NearbyRestaurants;
+        public static List<NearbyRestaurant> NearbyRestaurants = new List<NearbyRestaurant>();
 
         public static MobileServiceClient MobileServiceClient = new MobileServiceClient("https://restmapapp.azurewebsites.net");
 
         public static ApplicationUser ApplicationUser = new ApplicationUser();
+
+        public static RestaurantContainer RestaurantsContainer = new RestaurantContainer();
+
         public App()
         {
             InitializeComponent();
-            NearbyRestaurants = new List<NearbyRestaurant>();
+            
             MainPage = new NavigationPage(new View.LoginPage());
         }
 
