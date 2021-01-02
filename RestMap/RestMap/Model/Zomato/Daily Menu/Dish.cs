@@ -1,13 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace RestMap.Model.Zomato.Daily_Menu
 {
     public class Dish
     {
-        public string dish_id { get; set; }
-        public string name { get; set; }
-        public string price { get; set; }
+        [JsonProperty("dish_id")]
+        public string DishId { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("price")]
+        public string Price { get; set; }
     }
 }

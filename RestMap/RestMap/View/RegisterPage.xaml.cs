@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RestMap.Model.Application;
+using RestMap.ViewModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Markup;
 using Xamarin.Forms.Xaml;
@@ -13,24 +14,14 @@ namespace RestMap.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RegisterPage : ContentPage
     {
-        private ApplicationUser _applicationUser;
+        private readonly RegisterViewModel _registerViewModel;
+
         public RegisterPage()
         {
             InitializeComponent();
-            _applicationUser = new ApplicationUser();
-            ContainerStackLayout.BindingContext = _applicationUser;
+            _registerViewModel = new RegisterViewModel();
+            BindingContext = _registerViewModel;
         }
 
-        private async void Button_OnClicked(object sender, EventArgs e)
-        {
-            if (PasswordEntry.Text == ConfirmPasswordEntry.Text)
-            {
-                ApplicationUser.Register(_applicationUser);
-            }
-            else
-            {
-                await DisplayAlert("Error", "Passwords don't match", "Ok");
-            }
-        }
     }
 }

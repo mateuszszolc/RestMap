@@ -35,7 +35,7 @@ namespace RestMap.View
 
         private async void ShowMenu_OnClicked(object sender, EventArgs e)
         {
-            await Browser.OpenAsync(menuViewModel.RestaurantContainer.menu_url);
+            await Browser.OpenAsync(menuViewModel.RestaurantContainer.MenuUrl);
         }
     }
 }

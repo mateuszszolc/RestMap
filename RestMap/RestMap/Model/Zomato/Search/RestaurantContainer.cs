@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace RestMap.Model.Zomato.Search
 {
     public class RestaurantContainer
     {
-        public SpecificRestaurant restaurant { get; set; }
+        [JsonProperty("restaurant")]
+        public SpecificRestaurant Restaurant { get; set; }
     }
 }

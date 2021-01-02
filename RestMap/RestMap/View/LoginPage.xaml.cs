@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using RestMap.Model.Application;
 using RestMap.Model.Zomato.Geocode;
+using RestMap.ViewModel;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -14,27 +15,13 @@ namespace RestMap.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
+        private readonly LoginViewModel _loginViewModel;
+
         public LoginPage()
         {
             InitializeComponent();
-        }
-
-        private async void Button_OnClicked(object sender, EventArgs e)
-        {
-            bool login = await ApplicationUser.Login(EmailEntry.Text, PasswordEntry.Text);
-
-            if (login)
-                await Navigation.PushAsync(new MapPage());
-            else
-            {
-                await DisplayAlert("Information", "Logging has failed", "Ok");
-            }
-        }
-
-      
-        private async void Button_OnClicked1(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new RegisterPage());
+            _loginViewModel = new LoginViewModel();
+            BindingContext = _loginViewModel;
         }
     }
 }

@@ -18,7 +18,7 @@ namespace RestMap.Model
 
             if (dailyMenusContainer != null)
             {
-                return dailyMenusContainer.daily_menus;
+                return dailyMenusContainer.DailyMenus;
             }
 
             return null;

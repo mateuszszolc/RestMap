@@ -24,31 +24,31 @@
                             <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Padding="0" Margin="0,10,0,0" HorizontalOptions="FillAndExpand" CornerRadius="30">
                                 <StackLayout Orientation="Horizontal">
 
-                                    <Entry x:Name="UsernameEntry" Text="{Binding Username, Mode=OneWayToSource}"  Placeholder="Username" TextColor="Black" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="25,0,25,0" />
+                                    <Entry x:Name="UsernameEntry" Text="{Binding Username, Mode=TwoWay}"  Placeholder="Username" TextColor="Black" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="25,0,25,0" />
                                 </StackLayout>
                             </Frame>
 
                             <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Padding="0" Margin="0,10,0,0" HorizontalOptions="FillAndExpand" CornerRadius="30">
                                 <StackLayout Orientation="Horizontal">
 
-                                    <Entry x:Name="EmailEntry" Text="{Binding Email, Mode=OneWayToSource}" Placeholder="Email" Keyboard="Email" TextColor="Black" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="25,0,25,0" />
+                                    <Entry x:Name="EmailEntry" Text="{Binding Email, Mode=TwoWay}" Placeholder="Email" Keyboard="Email" TextColor="Black" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="25,0,25,0" />
                                 </StackLayout>
                             </Frame>
 
                             <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Padding="0" Margin="0,20,0,0" HorizontalOptions="FillAndExpand" CornerRadius="30">
                                 <StackLayout Orientation="Horizontal">
-                                    <Entry x:Name="PasswordEntry" Text="{Binding Password, Mode=OneWayToSource}" Placeholder="Password" IsPassword="True"  TextColor="Black" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="25,0,25,0"/>
+                                    <Entry x:Name="PasswordEntry" Text="{Binding Password, Mode=TwoWay}" Placeholder="Password" IsPassword="True"  TextColor="Black" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="25,0,25,0"/>
                                 </StackLayout>
                             </Frame>
 
                             <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Padding="0" Margin="0,20,0,0" HorizontalOptions="FillAndExpand" CornerRadius="30">
                                 <StackLayout Orientation="Horizontal">
-                                    <Entry x:Name="ConfirmPasswordEntry" Placeholder="Confirm Password" IsPassword="True"  TextColor="Black" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="25,0,25,0"/>
+                                    <Entry x:Name="ConfirmPasswordEntry" Text="{Binding ConfirmPassword, Mode=TwoWay}" Placeholder="Confirm Password" IsPassword="True"  TextColor="Black" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="25,0,25,0"/>
                                 </StackLayout>
                             </Frame>
 
 
-                            <Button Text="REGISTER" Clicked="Button_OnClicked" BackgroundColor="DarkOrange" TextColor="White" CornerRadius="20" Margin="0,20,0,0"/>
+                            <Button Text="REGISTER" Command="{Binding RegisterCommand}" CommandParameter="{Binding ApplicationUser}" BackgroundColor="DarkOrange" TextColor="White" CornerRadius="20" Margin="0,20,0,0"/>
 
 
                         </StackLayout>

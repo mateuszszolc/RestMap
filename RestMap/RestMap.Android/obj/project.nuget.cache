@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "rnxQmb2gwWxWwkSu9WnUjyjzaJEibbqDZ+CD+Dhv+9YbDsKHjcHsylK/nr1s4WNXjyWGw1HiONp8P45+FdiuOw==",
+  "dgSpecHash": "OVFf99uGlUR1bUHfkqoarVJeiRrnAGI/+vemdB9Z6iPH7vG7MkzzUGcJKu6z1iW7GrxB0AjL2j9Jpi76PDaSgQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\mateu\\Documents\\VII Semestr\\Praca\\RestMap\\RestMap\\RestMap.Android\\RestMap.Android.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\mateu\\.nuget\\packages\\microsoft.azure.mobile.client\\4.1.2\\microsoft.azure.mobile.client.4.1.2.nupkg.sha512",
+    "C:\\Users\\mateu\\.nuget\\packages\\microsoft.azure.mobile.client\\4.2.0\\microsoft.azure.mobile.client.4.2.0.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
@@ -38,9 +38,10 @@
     "C:\\Users\\mateu\\.nuget\\packages\\system.io.filesystem.primitives\\4.3.0\\system.io.filesystem.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\system.linq\\4.3.0\\system.linq.4.3.0.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\system.linq.expressions\\4.3.0\\system.linq.expressions.4.3.0.nupkg.sha512",
-    "C:\\Users\\mateu\\.nuget\\packages\\system.net.http\\4.3.0\\system.net.http.4.3.0.nupkg.sha512",
+    "C:\\Users\\mateu\\.nuget\\packages\\system.net.http\\4.3.4\\system.net.http.4.3.4.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\system.net.primitives\\4.3.0\\system.net.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\system.net.sockets\\4.3.0\\system.net.sockets.4.3.0.nupkg.sha512",
+    "C:\\Users\\mateu\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\system.objectmodel\\4.3.0\\system.objectmodel.4.3.0.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\system.reflection.extensions\\4.3.0\\system.reflection.extensions.4.3.0.nupkg.sha512",
@@ -106,39 +107,18 @@
     "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.support.versionedparcelable\\28.0.0.3\\xamarin.android.support.versionedparcelable.28.0.0.3.nupkg.sha512",
     "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.support.viewpager\\28.0.0.3\\xamarin.android.support.viewpager.28.0.0.3.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\xamarin.build.download\\0.4.11\\xamarin.build.download.0.4.11.nupkg.sha512",
-    "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.essentials\\1.5.3.2\\xamarin.essentials.1.5.3.2.nupkg.sha512",
+    "C:\\Users\\mateu\\.nuget\\packages\\xamarin.essentials\\1.6.0\\xamarin.essentials.1.6.0.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\xamarin.ffimageloading\\2.4.11.982\\xamarin.ffimageloading.2.4.11.982.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\xamarin.ffimageloading.forms\\2.4.11.982\\xamarin.ffimageloading.forms.2.4.11.982.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\xamarin.ffimageloading.transformations\\2.4.11.982\\xamarin.ffimageloading.transformations.2.4.11.982.nupkg.sha512",
-    "C:\\Users\\mateu\\.nuget\\packages\\xamarin.forms\\4.8.0.1269\\xamarin.forms.4.8.0.1269.nupkg.sha512",
-    "C:\\Users\\mateu\\.nuget\\packages\\xamarin.forms.maps\\4.8.0.1269\\xamarin.forms.maps.4.8.0.1269.nupkg.sha512",
-    "C:\\Users\\mateu\\.nuget\\packages\\xamarin.forms.pancakeview\\2.1.0.714\\xamarin.forms.pancakeview.2.1.0.714.nupkg.sha512",
+    "C:\\Users\\mateu\\.nuget\\packages\\xamarin.forms\\4.8.0.1821\\xamarin.forms.4.8.0.1821.nupkg.sha512",
+    "C:\\Users\\mateu\\.nuget\\packages\\xamarin.forms.maps\\4.8.0.1821\\xamarin.forms.maps.4.8.0.1821.nupkg.sha512",
+    "C:\\Users\\mateu\\.nuget\\packages\\xamarin.forms.pancakeview\\2.3.0.759\\xamarin.forms.pancakeview.2.3.0.759.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\xamarin.googleplayservices.base\\71.1610.0\\xamarin.googleplayservices.base.71.1610.0.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\xamarin.googleplayservices.basement\\71.1620.0\\xamarin.googleplayservices.basement.71.1620.0.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\xamarin.googleplayservices.maps\\71.1610.0\\xamarin.googleplayservices.maps.71.1610.0.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\xamarin.googleplayservices.tasks\\71.1601.0\\xamarin.googleplayservices.tasks.71.1601.0.nupkg.sha512",
-    "C:\\Users\\mateu\\.nuget\\packages\\xamarin.plugin.sharedtransitions\\2.3.0\\xamarin.plugin.sharedtransitions.2.3.0.nupkg.sha512"
+    "C:\\Users\\mateu\\.nuget\\packages\\xamarin.plugin.sharedtransitions\\2.4.0\\xamarin.plugin.sharedtransitions.2.4.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1605",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Wykryto obniżenie wersji pakietu: Xamarin.Forms.Maps z 4.8.0.1560 na 4.8.0.1269. Aby wybrać inną wersję, odwołaj się do pakietu bezpośrednio z projektu. \r\n RestMap.Android -> RestMap -> Xamarin.Forms.Maps (>= 4.8.0.1560) \r\n RestMap.Android -> Xamarin.Forms.Maps (>= 4.8.0.1269)",
-      "libraryId": "Xamarin.Forms.Maps",
-      "targetGraphs": [
-        "MonoAndroid,Version=v9.0"
-      ]
-    },
-    {
-      "code": "NU1605",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Wykryto obniżenie wersji pakietu: Xamarin.Forms z 4.8.0.1560 na 4.8.0.1269. Aby wybrać inną wersję, odwołaj się do pakietu bezpośrednio z projektu. \r\n RestMap.Android -> RestMap -> Xamarin.Forms (>= 4.8.0.1560) \r\n RestMap.Android -> Xamarin.Forms (>= 4.8.0.1269)",
-      "libraryId": "Xamarin.Forms",
-      "targetGraphs": [
-        "MonoAndroid,Version=v9.0"
-      ]
-    }
-  ]
+  "logs": []
 }

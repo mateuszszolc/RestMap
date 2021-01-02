@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace RestMap.Model.Zomato.Search
 {
     public class RatingObj
     {
-        public Title title { get; set; }
-        public BgColor bg_color { get; set; }
+        [JsonProperty("title")]
+        public Title Title { get; set; }
+
+        [JsonProperty("bg_color")]
+        public BgColor BgColor { get; set; }
     }
 }

@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace RestMap.Model.Zomato.Search
 {
     public class HasMenuStatus
     {
-        public int delivery { get; set; }
-        public int takeaway { get; set; }
+        [JsonProperty("delivery")]
+        public int Delivery { get; set; }
+
+        [JsonProperty("takeaway")]
+        public int TakeAway { get; set; }
 
     }
 }

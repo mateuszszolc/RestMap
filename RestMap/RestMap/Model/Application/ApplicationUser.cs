@@ -59,6 +59,18 @@ namespace RestMap.Model.Application
             }
         }
 
+        private string confirmPassword;
+
+        public string ConfirmPassword
+        {
+            get => confirmPassword;
+            set
+            {
+                confirmPassword = value;
+                OnPropertyChanged(nameof(ConfirmPassword));
+            }
+        }
+
         private bool isActive = true;
 
         public bool IsActive
@@ -79,6 +91,21 @@ namespace RestMap.Model.Application
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        private static async Task<bool> CheckIfUserExistsInDatabase(ApplicationUser appUser)
+        {
+            
+                var applicationUsers = (await App.MobileServiceClient.GetTable<ApplicationUser>()
+                    .Where(x => (x.Email == appUser.Email) || (x.Username == appUser.Username))
+                    .ToListAsync());
+
+                if (applicationUsers.Count > 0)
+                {
+                    return true;
+                }
+
+                return false;
+        }
+
         public static async Task<bool> Login(string email, string password)
         {
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
@@ -93,27 +120,36 @@ namespace RestMap.Model.Application
 
             if (applicationUser != null && applicationUser.IsActive)
             {
-                App.ApplicationUser = applicationUser;
                 if (PasswordHelper.Verify(password, applicationUser.Password))
+                {
+                    App.ApplicationUser = applicationUser;
                     return true;
+                }
+
                 return false;
             }
 
             return false;
         }
 
-        public static async void Register(ApplicationUser appUser)
+        public static async Task<bool> Register(ApplicationUser appUser)
         {
+            var userExists = await CheckIfUserExistsInDatabase(appUser);
+
+            if (userExists)
+            {
+                return false;
+            }
+            
             appUser.Password = PasswordHelper.Hash(appUser.Password);
+            appUser.ConfirmPassword = PasswordHelper.Hash(appUser.ConfirmPassword);
             await App.MobileServiceClient.GetTable<ApplicationUser>().InsertAsync(appUser);
+
+            return true;
         }
 
         public static async Task<ApplicationUser> GetApplicationUserById(string id)
         {
-            //ApplicationUser appUser =  (await App.MobileServiceClient.GetTable<ApplicationUser>()
-            //        .Where(x => x.Id == id)
-            //        .ToListAsync())
-            //        .FirstOrDefault();
             var applicationUserTable = App.MobileServiceClient.GetTable<ApplicationUser>();
             IMobileServiceTableQuery<ApplicationUser> query = applicationUserTable.CreateQuery()
                 .Select(x => x)

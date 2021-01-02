@@ -27,7 +27,7 @@ namespace RestMap.ViewModel
         {
             if (App.RestaurantsContainer != null)
             {
-                var dailyMenus = await DailyMenuService.GetDailyMenus(App.RestaurantsContainer.id);
+                var dailyMenus = await DailyMenuService.GetDailyMenus(App.RestaurantsContainer.Id);
                // var dailyMenus = await DailyMenuService.GetDailyMenus("16507624");
 
                 if (dailyMenus != null)

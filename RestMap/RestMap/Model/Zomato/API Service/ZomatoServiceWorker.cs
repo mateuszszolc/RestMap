@@ -15,7 +15,7 @@ namespace RestMap.Model.Zomato.API_Service
         {
             var userReviewsContainer = await _zomatoService.GetReviewsAsync(id, count);
 
-            return userReviewsContainer?.user_reviews;
+            return userReviewsContainer?.UserReviews;
         }
     }
 }

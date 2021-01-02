@@ -60,14 +60,14 @@ namespace RestMap.Model.Application
         public static async void InsertRestaurantComment(RestaurantComment restaurantComment)
         {
             restaurantComment.ApplicationUserId = App.ApplicationUser.Id;
-            restaurantComment.RestaurantId = App.RestaurantsContainer.id;
+            restaurantComment.RestaurantId = App.RestaurantsContainer.Id;
             await App.MobileServiceClient.GetTable<RestaurantComment>().InsertAsync(restaurantComment);
         }
 
         public static async Task<List<RestaurantComment>> GetRestaurantComments()
         {
             return await App.MobileServiceClient.GetTable<RestaurantComment>()
-                .Where(x => (x.ApplicationUserId == App.ApplicationUser.Id) && (x.RestaurantId == App.RestaurantsContainer.id))
+                .Where(x => (x.ApplicationUserId == App.ApplicationUser.Id) && (x.RestaurantId == App.RestaurantsContainer.Id))
                 .ToListAsync();
         }
 

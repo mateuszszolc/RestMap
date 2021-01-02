@@ -1,20 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace RestMap.Model.Zomato.Reviews
 {
     public class Review
     {
-        public string rating { get; set; }
-        public string review_text { get; set; }
-        public int id { get; set; }
-        public string rating_color { get; set; }
-        public string review_time_friendly { get; set; }
-        public string rating_text { get; set; }
-        public int timestamp { get; set; }
-        public int likes { get; set; }
-        public User user { get; set; }
-        public int comments_count { get; set; }
+        [JsonProperty("rating")]
+        public string Rating { get; set; }
+
+        [JsonProperty("review_text")]
+        public string ReviewText { get; set; }
+
+        [JsonProperty("id")]
+        public int Id { get; set; }
+
+        [JsonProperty("rating_color")]
+        public string RatingColor { get; set; }
+
+        [JsonProperty("review_time_friendly")]
+        public string ReviewTimeFriendly { get; set; }
+
+        [JsonProperty("rating_text")]
+        public string RatingText { get; set; }
+
+        [JsonProperty("timestamp")]
+        public int Timestamp { get; set; }
+
+        [JsonProperty("likes")]
+        public int Likes { get; set; }
+
+        [JsonProperty("user")]
+        public User User { get; set; }
+
+        [JsonProperty("comments_count")]
+        public int CommentsCount { get; set; }
     }
 }

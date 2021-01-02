@@ -18,7 +18,7 @@ namespace RestMap.Model.Zomato
         {
             LocationSuggestionContainer locationSuggestionContainer = await zomatoService.GetLocationSuggestionsAsync(query);
 
-            return locationSuggestionContainer.location_suggestions;
+            return locationSuggestionContainer.LocationSuggestions;
 
         }
     }

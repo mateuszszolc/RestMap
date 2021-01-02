@@ -14,6 +14,7 @@ namespace RestMap.View
     public partial class NotFoundPage : ContentPage
     {
         private readonly NotFoundViewModel _notFoundViewModel;
+
         public NotFoundPage()
         {
             InitializeComponent();

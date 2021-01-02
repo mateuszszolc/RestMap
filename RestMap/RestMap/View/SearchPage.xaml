@@ -23,11 +23,11 @@
                                    HeightRequest="20"
                                    WidthRequest="20" />
                             <Label Grid.Column="1"
-                                   Text="{Binding title}"
+                                   Text="{Binding Title}"
                                    FontAttributes="Bold" />
                             <Label Grid.Row="1"
                                    Grid.Column="1"
-                                   Text="{Binding country_name}"
+                                   Text="{Binding CountryName}"
                                    VerticalOptions="End" />
                         </Grid>
                     </ViewCell>

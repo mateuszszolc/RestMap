@@ -86,7 +86,7 @@ namespace RestMap.View
 
         private async void ShowMorePhotos_Clicked(object sender, EventArgs e)
         {
-            await Browser.OpenAsync(photosViewModel.RestaurantContainer.photos_url);
+            await Browser.OpenAsync(photosViewModel.RestaurantContainer.PhotosUrl);
         }
     }
 }

@@ -29,7 +29,8 @@
         "sources": {
           "C:\\Program Files (x86)\\DevExpress 20.1\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/itdesk-bs/_packaging/itDesk/nuget/v3/index.json": {}
         },
         "frameworks": {
           "monoandroid90": {
@@ -46,7 +47,7 @@
           "dependencies": {
             "Microsoft.Azure.Mobile.Client": {
               "target": "Package",
-              "version": "[4.1.2, )"
+              "version": "[4.2.0, )"
             },
             "Plugin.CurrentActivity": {
               "target": "Package",
@@ -59,6 +60,10 @@
             "Sharpnado.Presentation.Forms": {
               "target": "Package",
               "version": "[1.7.1, )"
+            },
+            "System.Net.Http": {
+              "target": "Package",
+              "version": "[4.3.4, )"
             },
             "WindowsAzure.Storage": {
               "target": "Package",
@@ -74,7 +79,7 @@
             },
             "Xamarin.Essentials": {
               "target": "Package",
-              "version": "[1.5.3.2, )"
+              "version": "[1.6.0, )"
             },
             "Xamarin.FFImageLoading.Forms": {
               "target": "Package",
@@ -86,19 +91,19 @@
             },
             "Xamarin.Forms": {
               "target": "Package",
-              "version": "[4.8.0.1269, )"
+              "version": "[4.8.0.1821, )"
             },
             "Xamarin.Forms.Maps": {
               "target": "Package",
-              "version": "[4.8.0.1269, )"
+              "version": "[4.8.0.1821, )"
             },
             "Xamarin.Forms.PancakeView": {
               "target": "Package",
-              "version": "[2.1.0.714, )"
+              "version": "[2.3.0.759, )"
             },
             "Xamarin.Plugin.SharedTransitions": {
               "target": "Package",
-              "version": "[2.3.0, )"
+              "version": "[2.4.0, )"
             }
           }
         }
@@ -128,7 +133,8 @@
         "sources": {
           "C:\\Program Files (x86)\\DevExpress 20.1\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/itdesk-bs/_packaging/itDesk/nuget/v3/index.json": {}
         },
         "frameworks": {
           "netstandard2.0": {
@@ -146,7 +152,7 @@
           "dependencies": {
             "Microsoft.Azure.Mobile.Client": {
               "target": "Package",
-              "version": "[4.1.2, )"
+              "version": "[4.2.0, )"
             },
             "NETStandard.Library": {
               "suppressParent": "All",
@@ -166,6 +172,10 @@
               "target": "Package",
               "version": "[1.7.1, )"
             },
+            "System.Net.Http": {
+              "target": "Package",
+              "version": "[4.3.4, )"
+            },
             "WindowsAzure.Storage": {
               "target": "Package",
               "version": "[9.3.3, )"
@@ -180,7 +190,7 @@
             },
             "Xamarin.Essentials": {
               "target": "Package",
-              "version": "[1.5.3.2, )"
+              "version": "[1.6.0, )"
             },
             "Xamarin.FFImageLoading.Forms": {
               "target": "Package",
@@ -192,19 +202,19 @@
             },
             "Xamarin.Forms": {
               "target": "Package",
-              "version": "[4.8.0.1560, )"
+              "version": "[4.8.0.1821, )"
             },
             "Xamarin.Forms.Maps": {
               "target": "Package",
-              "version": "[4.8.0.1560, )"
+              "version": "[4.8.0.1821, )"
             },
             "Xamarin.Forms.PancakeView": {
               "target": "Package",
-              "version": "[2.1.0.714, )"
+              "version": "[2.3.0.759, )"
             },
             "Xamarin.Plugin.SharedTransitions": {
               "target": "Package",
-              "version": "[2.3.0, )"
+              "version": "[2.4.0, )"
             }
           },
           "imports": [

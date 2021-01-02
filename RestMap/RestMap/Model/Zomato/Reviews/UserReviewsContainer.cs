@@ -1,14 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace RestMap.Model.Zomato.Reviews
 {
     public class UserReviewsContainer
     {
-        public int reviews_count { get; set; }
-        public int reviews_start { get; set; }
-        public int reviews_shown { get; set; }
-        public List<UserReview> user_reviews { get; set; }
+        [JsonProperty("reviews_count")]
+        public int ReviewsCount { get; set; }
+
+        [JsonProperty("reviews_start")]
+        public int ReviewsStart { get; set; }
+
+        [JsonProperty("reviews_shown")]
+        public int ReviewsShown { get; set; }
+
+        [JsonProperty("user_reviews")]
+        public List<UserReview> UserReviews { get; set; }
     }
 }

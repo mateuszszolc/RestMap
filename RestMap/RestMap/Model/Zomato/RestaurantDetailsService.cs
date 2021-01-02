@@ -13,11 +13,11 @@ namespace RestMap.Model.Zomato
 
         public static async Task<Model.Zomato.Restaurant.RestaurantContainer> GetRestaurantDetails(string id)
         {
-            Model.Zomato.Restaurant.RestaurantContainer restaurantContainer = await zomatoService.GetRestaurantDetailsById(id);
+            Model.Zomato.Restaurant.RestaurantContainer restaurantContainer = await zomatoService.GetRestaurantDetailsByIdAsync(id);
 
-            if (restaurantContainer.featured_image == string.Empty)
+            if (restaurantContainer.FeaturedImage == string.Empty)
             {
-                restaurantContainer.featured_image = "defaultImage.png";
+                restaurantContainer.FeaturedImage = "defaultImage.png";
             }
 
             return restaurantContainer;

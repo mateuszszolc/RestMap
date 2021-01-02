@@ -25,8 +25,6 @@ namespace RestMap.View
         {
             base.OnAppearing();
 
-            //reviewsViewModel.GetReviews();
-            //await reviewsViewModel.GetReviews();
             await reviewsViewModel.MergeReviews();
         }
 

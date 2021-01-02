@@ -3,18 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RestMap.View.ReviewsPage">
     <StackLayout Orientation="Vertical" Padding="10">
-            <Label Text="{Binding RestaurantContainer.name}" TextColor="Black" FontAttributes="Bold" FontSize="22"></Label>
+            <Label Text="{Binding RestaurantContainer.Name}" TextColor="Black" FontAttributes="Bold" FontSize="22"></Label>
             <StackLayout Orientation="Horizontal">
                 <Label FontAttributes="Bold" FontSize="14" Margin="0, 5, 0, 0" Text="Average Cost For Two:"></Label>
-                <Label Margin="0, 5, 0, 0" Text="{Binding RestaurantContainer.average_cost}"></Label>
+                <Label Margin="0, 5, 0, 0" Text="{Binding RestaurantContainer.AverageCost}"></Label>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Label FontAttributes="Bold" FontSize="14"  Margin="0, 5, 0, 0" Text="Address:"></Label>
-                <Label Margin="0, 5, 0, 0" Text="{Binding RestaurantContainer.location.locality_verbose}"></Label>
+                <Label Margin="0, 5, 0, 0" Text="{Binding RestaurantContainer.Location.LocalityVerbose}"></Label>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Label FontAttributes="Bold" FontSize="14" Margin="0, 5, 0, 0" Text="Phone number:"></Label>
-                <Label Margin="0, 5, 0, 0" Text="{Binding RestaurantContainer.phone_numbers}"></Label>
+                <Label Margin="0, 5, 0, 0" Text="{Binding RestaurantContainer.PhoneNumbers}"></Label>
             </StackLayout>
             <BoxView Margin="0, 5, 0, 0" HeightRequest="1" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="#E4E4E4"/>
             <Label Margin="0,5,0,5" Text="Comments" FontSize="20" FontAttributes="Bold"></Label>
@@ -27,8 +27,8 @@
                     <DataTemplate>
                         <StackLayout>
                             <BoxView Margin="0, 5, 0, 0" HeightRequest="1" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="#E4E4E4"/>
-                            <Label Text="{Binding review.user.name}" FontAttributes="Bold" FontSize="16"></Label>
-                            <Label Text="{Binding review.review_text}"  FontSize="14"></Label>
+                            <Label Text="{Binding Review.User.Name}" FontAttributes="Bold" FontSize="16"></Label>
+                            <Label Text="{Binding Review.ReviewText}"  FontSize="14"></Label>
                         </StackLayout>
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>

@@ -17,7 +17,7 @@ namespace RestMap.View
     public partial class RestaurantListPage : ContentPage
     {
         
-        static Filter filter = new Filter();
+        
 
         LocationDetailsContainer locationDetailsContainer = new LocationDetailsContainer();
         static ZomatoClient zomatoClient = new ZomatoClient();
@@ -32,7 +32,7 @@ namespace RestMap.View
         {
             InitializeComponent();
             _locationSuggestion = locationSuggestion;
-            LocationLabel.Text = $"{locationSuggestion.city_name}, {locationSuggestion.country_name}";
+            LocationLabel.Text = $"{locationSuggestion.CityName}, {locationSuggestion.CountryName}";
             //GetRestaurants();
         }
 
@@ -42,21 +42,21 @@ namespace RestMap.View
             base.OnAppearing();
             //GetRestaurants();
             if (true)
-                BindingContext = await SearchService.SearchRestaurantsAsync(_locationSuggestion.entity_id.ToString(),
-                    _locationSuggestion.entity_type);
+                BindingContext = await SearchService.SearchRestaurantsAsync(_locationSuggestion.EntityId.ToString(),
+                    _locationSuggestion.EntityType);
             //BindingContext = App.NearbyRestaurants;
             else
                 await Navigation.PushAsync(new NotFoundPage());
         }
 
 
-        public List<Filter> FilterList => filter.GetFilters();
+       
 
         public async void GetRestaurants()
          {
              locationDetailsContainer = await zomatoService.GetLocationDetailsByCoordinatesAsync("52.237049", "21.017532");            
 
-             nearbyRestaurants = locationDetailsContainer.nearby_restaurants;            
+             nearbyRestaurants = locationDetailsContainer.NearbyRestaurants;            
          }
 
         public void SetRestaurants()
@@ -92,8 +92,8 @@ namespace RestMap.View
          private async void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
          {
              string property =
-                 ((sender as Xamarin.Forms.View).BindingContext as Model.Zomato.Search.RestaurantContainer).restaurant
-                 .id;
+                 ((sender as Xamarin.Forms.View).BindingContext as Model.Zomato.Search.RestaurantContainer).Restaurant
+                 .Id;
             await Navigation.PushAsync(new RestaurantDetailsPage(property));
           }
 

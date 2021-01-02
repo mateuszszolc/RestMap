@@ -16,7 +16,7 @@ namespace RestMap.Model.Zomato
         {
             LocationDetailsContainer locationDetailsContainer = await zomatoService.GetLocationDetailsByCoordinatesAsync("52.237049", "21.017532");
 
-            return locationDetailsContainer.nearby_restaurants;
+            return locationDetailsContainer.NearbyRestaurants;
         }
 
         public static async Task<List<NearbyRestaurant>> GetRestaurants(string latitude, string longitude)
@@ -28,7 +28,7 @@ namespace RestMap.Model.Zomato
                 return new List<NearbyRestaurant>();
             }
 
-            return locationDetailsContainer.nearby_restaurants;
+            return locationDetailsContainer.NearbyRestaurants;
         }
     }
 }

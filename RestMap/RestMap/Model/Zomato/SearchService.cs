@@ -18,15 +18,15 @@ namespace RestMap.Model.Zomato
         {
             RestaurantsContainer restaurantsContainer =  await zomatoService.GetRestaurantsByChoosenLocationAsync(entityId, entityType);
 
-            foreach (var restaurant in restaurantsContainer.restaurants)
+            foreach (var restaurant in restaurantsContainer.Restaurants)
             {
-                if (restaurant.restaurant.featured_image == string.Empty)
+                if (restaurant.Restaurant.FeaturedImage == string.Empty)
                 {
-                    restaurant.restaurant.featured_image = "defaultImage.png";
+                    restaurant.Restaurant.FeaturedImage = "defaultImage.png";
                 }
             }
 
-            return restaurantsContainer.restaurants;
+            return restaurantsContainer.Restaurants;
         }
     }
 }

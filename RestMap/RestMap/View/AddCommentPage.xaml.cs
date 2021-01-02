@@ -12,17 +12,13 @@ namespace RestMap.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddCommentPage : ContentPage
     {
-        private readonly AddCommentViewModel addCommentViewModel;
+        private readonly AddCommentViewModel _addCommentViewModel;
+
         public AddCommentPage()
         {
             InitializeComponent();
-            addCommentViewModel = new AddCommentViewModel();
-            BindingContext = addCommentViewModel;
-        }
-
-        private void AddComment_OnClicked(object sender, EventArgs e)
-        {
-            
+            _addCommentViewModel = new AddCommentViewModel();
+            BindingContext = _addCommentViewModel;
         }
     }
 }

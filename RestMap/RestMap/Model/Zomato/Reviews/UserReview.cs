@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace RestMap.Model.Zomato.Reviews
 {
     public class UserReview
     {
-        public Review review { get; set; }
+        [JsonProperty("review")]
+        public Review Review { get; set; }
     }
 }

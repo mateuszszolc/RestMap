@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using RestMap.Model.Zomato;
@@ -28,7 +30,9 @@ namespace RestMap.View
             InitializeComponent();
 
             GetPermissions();
+
         }
+
 
         private async void GetPermissions()
         {
@@ -93,8 +97,8 @@ namespace RestMap.View
             {
                 try
                 {
-                    double longitude = Convert.ToDouble(item.restaurant.location.longitude.Replace(".", ","));
-                    double latitude = Convert.ToDouble(item.restaurant.location.latitude.Replace(".", ","));
+                    double longitude = Convert.ToDouble(item.Restaurant.Location.Longitude.Replace(".", ","));
+                    double latitude = Convert.ToDouble(item.Restaurant.Location.Latitude.Replace(".", ","));
                     var position =
                         new Xamarin.Forms.Maps.Position(latitude, longitude);
 
@@ -102,8 +106,8 @@ namespace RestMap.View
                     {
                         Type = Xamarin.Forms.Maps.PinType.SavedPin,
                         Position = position,
-                        Label = item.restaurant.name,
-                        Address = item.restaurant.location.address
+                        Label = item.Restaurant.Name,
+                        Address = item.Restaurant.Location.Address
                       
                     };
 
@@ -120,9 +124,9 @@ namespace RestMap.View
         {
             var selectedPin = sender as Pin;
 
-            var selectedRestaurant = App.NearbyRestaurants.FirstOrDefault(x => !(selectedPin is null) && (x.restaurant.location.address == selectedPin.Address) && (x.restaurant.name == selectedPin.Label));
+            var selectedRestaurant = App.NearbyRestaurants.FirstOrDefault(x => !(selectedPin is null) && (x.Restaurant.Location.Address == selectedPin.Address) && (x.Restaurant.Name == selectedPin.Label));
 
-            await Navigation.PushAsync(new RestaurantDetailsPage(selectedRestaurant.restaurant.id));
+            await Navigation.PushAsync(new RestaurantDetailsPage(selectedRestaurant.Restaurant.Id));
         }
 
         protected async override void OnDisappearing()

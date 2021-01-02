@@ -70,14 +70,14 @@ namespace RestMap.ViewModel
                 UserReview userReview = new UserReview();
                 var review = new Model.Zomato.Reviews.Review();
                 var user = new User();
-                review.user = user;
-                userReview.review = review;
+                review.User = user;
+                userReview.Review = review;
 
 
                 for(int i = 0; i < _restaurantComments.Count; i++)
                 {
-                    userReview.review.review_text = _restaurantComments[i].CommentContent;
-                    userReview.review.user.name = _appUsers[i].Username;
+                    userReview.Review.ReviewText = _restaurantComments[i].CommentContent;
+                    userReview.Review.User.Name = _appUsers[i].Username;
 
                     UserReviews.Add(userReview);
                 }
@@ -107,7 +107,7 @@ namespace RestMap.ViewModel
             {
                  //var userReviews = await ZomatoServiceWorker.GetReviewsAsync(App.RestaurantsContainer.id, "10");
 
-                 var task = ZomatoServiceWorker.GetReviewsAsync(App.RestaurantsContainer.id, "10");
+                 var task = ZomatoServiceWorker.GetReviewsAsync(App.RestaurantsContainer.Id, "10");
                  await task;
                  var userReviews = task.GetAwaiter().GetResult();
                 if (userReviews != null)

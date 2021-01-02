@@ -2,10 +2,10 @@
 using RestMap.Interfaces;
 using RestMap.Settings;
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Android.Net;
+using Xamarin.Forms.PlatformConfiguration;
 
 namespace RestMap.Model.Zomato.API_Service
 {
@@ -15,7 +15,7 @@ namespace RestMap.Model.Zomato.API_Service
 
         public ZomatoClient()
         {
-            _client = new HttpClient()
+            _client = new HttpClient(new AndroidClientHandler())
             {
                 BaseAddress = new Uri(ZomatoSettings.BASE_URL)
             };
@@ -25,12 +25,12 @@ namespace RestMap.Model.Zomato.API_Service
         {
             var response = await _client.GetAsync(endpoint);
 
-            if (!response.IsSuccessStatusCode)
-                return default(T);
+                if (!response.IsSuccessStatusCode)
+                    return default(T);
 
-            var result = await response.Content.ReadAsStringAsync();
+                var result = await response.Content.ReadAsStringAsync();
 
-            return JsonConvert.DeserializeObject<T>(result);
+                return JsonConvert.DeserializeObject<T>(result);
         }
     }
 }

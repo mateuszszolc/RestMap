@@ -2,7 +2,7 @@ package com.microsoft.windowsazure.mobileservices.authentication;
 
 
 public class RedirectUrlActivity
-	extends android.app.Activity
+	extends crc64a0e0a82d0db9a07d.WebAuthenticatorCallbackActivity
 	implements
 		mono.android.IGCUserPeer
 {
@@ -10,7 +10,6 @@ public class RedirectUrlActivity
 	public static final String __md_methods;
 	static {
 		__md_methods = 
-			"n_onCreate:(Landroid/os/Bundle;)V:GetOnCreate_Landroid_os_Bundle_Handler\n" +
 			"";
 		mono.android.Runtime.register ("Microsoft.WindowsAzure.MobileServices.RedirectUrlActivity, Microsoft.Azure.Mobile.Client", RedirectUrlActivity.class, __md_methods);
 	}
@@ -22,14 +21,6 @@ public class RedirectUrlActivity
 		if (getClass () == RedirectUrlActivity.class)
 			mono.android.TypeManager.Activate ("Microsoft.WindowsAzure.MobileServices.RedirectUrlActivity, Microsoft.Azure.Mobile.Client", "", this, new java.lang.Object[] {  });
 	}
-
-
-	public void onCreate (android.os.Bundle p0)
-	{
-		n_onCreate (p0);
-	}
-
-	private native void n_onCreate (android.os.Bundle p0);
 
 	private java.util.ArrayList refList;
 	public void monodroidAddReference (java.lang.Object obj)

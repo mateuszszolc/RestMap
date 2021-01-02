@@ -2,7 +2,7 @@ package crc6479820c45fd9c6153;
 
 
 public class NavigationTransitionListener
-	extends android.transition.TransitionListenerAdapter
+	extends android.support.transition.TransitionListenerAdapter
 	implements
 		mono.android.IGCUserPeer
 {
@@ -10,9 +10,9 @@ public class NavigationTransitionListener
 	public static final String __md_methods;
 	static {
 		__md_methods = 
-			"n_onTransitionStart:(Landroid/transition/Transition;)V:GetOnTransitionStart_Landroid_transition_Transition_Handler\n" +
-			"n_onTransitionEnd:(Landroid/transition/Transition;)V:GetOnTransitionEnd_Landroid_transition_Transition_Handler\n" +
-			"n_onTransitionCancel:(Landroid/transition/Transition;)V:GetOnTransitionCancel_Landroid_transition_Transition_Handler\n" +
+			"n_onTransitionStart:(Landroid/support/transition/Transition;)V:GetOnTransitionStart_Landroid_support_transition_Transition_Handler\n" +
+			"n_onTransitionEnd:(Landroid/support/transition/Transition;)V:GetOnTransitionEnd_Landroid_support_transition_Transition_Handler\n" +
+			"n_onTransitionCancel:(Landroid/support/transition/Transition;)V:GetOnTransitionCancel_Landroid_support_transition_Transition_Handler\n" +
 			"";
 		mono.android.Runtime.register ("Plugin.SharedTransitions.Platforms.Android.NavigationTransitionListener, Plugin.SharedTransitions", NavigationTransitionListener.class, __md_methods);
 	}
@@ -26,28 +26,28 @@ public class NavigationTransitionListener
 	}
 
 
-	public void onTransitionStart (android.transition.Transition p0)
+	public void onTransitionStart (android.support.transition.Transition p0)
 	{
 		n_onTransitionStart (p0);
 	}
 
-	private native void n_onTransitionStart (android.transition.Transition p0);
+	private native void n_onTransitionStart (android.support.transition.Transition p0);
 
 
-	public void onTransitionEnd (android.transition.Transition p0)
+	public void onTransitionEnd (android.support.transition.Transition p0)
 	{
 		n_onTransitionEnd (p0);
 	}
 
-	private native void n_onTransitionEnd (android.transition.Transition p0);
+	private native void n_onTransitionEnd (android.support.transition.Transition p0);
 
 
-	public void onTransitionCancel (android.transition.Transition p0)
+	public void onTransitionCancel (android.support.transition.Transition p0)
 	{
 		n_onTransitionCancel (p0);
 	}
 
-	private native void n_onTransitionCancel (android.transition.Transition p0);
+	private native void n_onTransitionCancel (android.support.transition.Transition p0);
 
 	private java.util.ArrayList refList;
 	public void monodroidAddReference (java.lang.Object obj)

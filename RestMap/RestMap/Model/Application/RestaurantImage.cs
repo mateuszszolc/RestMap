@@ -71,7 +71,7 @@ namespace RestMap.Model.Application
             RestaurantImage restaurantImage = new RestaurantImage()
             {
                 ApplicationUserId = App.ApplicationUser.Id,
-                RestaurantId = App.RestaurantsContainer.id,
+                RestaurantId = App.RestaurantsContainer.Id,
                 ImageUrl = url
             };
 
@@ -82,7 +82,7 @@ namespace RestMap.Model.Application
         public static async Task<List<RestaurantImage>> GetRestaurantImages()
         {
             return await App.MobileServiceClient.GetTable<RestaurantImage>()
-                .Where(x => (x.ApplicationUserId == App.ApplicationUser.Id) && (x.RestaurantId == App.RestaurantsContainer.id))
+                .Where(x => (x.ApplicationUserId == App.ApplicationUser.Id) && (x.RestaurantId == App.RestaurantsContainer.Id))
                 .ToListAsync();
         }
     }
