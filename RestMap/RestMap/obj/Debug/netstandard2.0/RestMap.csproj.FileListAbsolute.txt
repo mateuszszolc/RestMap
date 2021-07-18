@@ -61,3 +61,6 @@ C:\Users\mateu\Documents\VII Semestr\Praca\RestMap\RestMap\RestMap\bin\Debug\net
 C:\Users\mateu\Documents\VII Semestr\Praca\RestMap\RestMap\RestMap\bin\Debug\netstandard2.0\Mono.Android.pdb
 C:\Users\mateu\Documents\VII Semestr\Praca\RestMap\RestMap\RestMap\bin\Debug\netstandard2.0\Mono.Android.xml
 C:\Users\mateu\Documents\VII Semestr\Praca\RestMap\RestMap\RestMap\obj\Debug\netstandard2.0\RestMap.csproj.CopyComplete
+C:\Users\mateu\Documents\VII Semestr\Praca\RestMap\RestMap\RestMap\obj\Debug\netstandard2.0\View\UserCommentsPage.xaml.g.cs
+C:\Users\mateu\Documents\VII Semestr\Praca\RestMap\RestMap\RestMap\obj\Debug\netstandard2.0\View\UserImagesPage.xaml.g.cs
+C:\Users\mateu\Documents\VII Semestr\Praca\RestMap\RestMap\RestMap\obj\Debug\netstandard2.0\View\UserRestaurantsPage.xaml.g.cs

@@ -8,24 +8,30 @@ using RestMap.Model.Application;
 using RestMap.Model.Zomato.API_Service;
 using RestMap.Model.Zomato.Restaurant;
 using RestMap.Model.Zomato.Reviews;
+using RestMap.View;
+using Xamarin.Forms;
 
 namespace RestMap.ViewModel
 {
     public class ReviewsViewModel
     {
+        public Command NavigateToAddCommentPageCommand { get; set; }
         public RestaurantContainer RestaurantContainer { get; set; }
         public ObservableCollection<UserReview> UserReviews { get; set; }
         private ObservableCollection<RestaurantComment> _restaurantComments;
         private ObservableCollection<ApplicationUser> _appUsers;
         private List<string> userNames;
+        private readonly ZomatoServiceWorker _serviceWorker;
 
         public ReviewsViewModel()
         {
             RestaurantContainer = new RestaurantContainer();
+            NavigateToAddCommentPageCommand = new Command(async () => await NavigateToAddCommentPage());
             UserReviews = new ObservableCollection<UserReview>();
             _restaurantComments = new ObservableCollection<RestaurantComment>();
             _appUsers = new ObservableCollection<ApplicationUser>();
             userNames = new List<string>();
+            _serviceWorker = new ZomatoServiceWorker();
 
             if (App.RestaurantsContainer != null)
             {
@@ -33,9 +39,13 @@ namespace RestMap.ViewModel
             }
         }
 
+        public async Task NavigateToAddCommentPage()
+        {
+            await App.Current.MainPage.Navigation.PushAsync(new AddCommentPage());
+        }
+
         public async Task GetReviewsFromDb()
         {
-            //var reviewsFromDb = await RestaurantComment.GetRestaurantComments();
             var reviewsFromDbTask = RestaurantComment.GetRestaurantComments();
             await reviewsFromDbTask;
             var reviewsFromDb = reviewsFromDbTask.GetAwaiter().GetResult();
@@ -56,14 +66,10 @@ namespace RestMap.ViewModel
 
         public async Task MergeReviews()
         {
-            //var task1 = GetReviews();
-            //var task2 = GetReviewsFromDb();
-            //var task3 = GetApplicationUsers();
+
             await GetReviews();
             await GetReviewsFromDb();
             await GetApplicationUsers();
-            //await Task.WhenAll(task1, task2);
-            //await Task.WhenAll(task3);
 
             if (_restaurantComments.Count > 0)
             {
@@ -91,8 +97,7 @@ namespace RestMap.ViewModel
 
                 foreach (var comment in _restaurantComments)
                 {
-                   // var user = await ApplicationUser.GetApplicationUserById(comment.ApplicationUserId);
-                   var task = ApplicationUser.GetApplicationUserById(comment.ApplicationUserId);
+                    var task = ApplicationUser.GetApplicationUserById(comment.ApplicationUserId);
                    await task;
                    var user = task.GetAwaiter().GetResult();
                     _appUsers.Add(user);
@@ -105,11 +110,11 @@ namespace RestMap.ViewModel
         {
             if (App.RestaurantsContainer != null)
             {
-                 //var userReviews = await ZomatoServiceWorker.GetReviewsAsync(App.RestaurantsContainer.id, "10");
 
-                 var task = ZomatoServiceWorker.GetReviewsAsync(App.RestaurantsContainer.Id, "10");
-                 await task;
-                 var userReviews = task.GetAwaiter().GetResult();
+                var task = _serviceWorker.GetReviewsAsync(App.RestaurantsContainer.Id, "10");
+                await task;
+                var userReviews = task.GetAwaiter().GetResult();
+
                 if (userReviews != null)
                 {
                     UserReviews.Clear();
@@ -118,22 +123,6 @@ namespace RestMap.ViewModel
                     {
                         UserReviews.Add(review);
                     }
-                }
-            }
-        }
-
-        public async Task GetUserNames()
-        {
-            if (_restaurantComments.Count > 0)
-            {
-                userNames.Clear();
-                foreach (var comment in _restaurantComments)
-                {
-                    //var userName = await ApplicationUser.GetUsernameByUserId(comment.ApplicationUserId);
-                    var task = ApplicationUser.GetUsernameByUserId(comment.ApplicationUserId);
-                    await task;
-                    var userName = task.GetAwaiter().GetResult();
-                    userNames.Add(userName);
                 }
             }
         }

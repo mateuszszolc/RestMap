@@ -21,12 +21,12 @@
             </StackLayout>
             <BoxView Margin="0, 5, 0, 0" HeightRequest="1" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="#E4E4E4"/>
             <StackLayout Orientation="Horizontal">
-                <Button Margin="0, 5, 0, 0" Clicked="ShowMorePhotos_Clicked" Text="Show More Photos" BackgroundColor="SeaGreen" CornerRadius="10"></Button>
+                <Button Margin="0, 5, 0, 0" Command="{Binding OpenPhotosPageCommand}" CommandParameter="{Binding RestaurantContainer}" Text="Show More Photos" BackgroundColor="SeaGreen" CornerRadius="10"></Button>
             </StackLayout>
             <BoxView Margin="0, 5, 0, 0" HeightRequest="1" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="#E4E4E4"/>
             <Label Margin="0, 5, 0, 0" Text="Photos" FontSize="20" FontAttributes="Bold" ></Label>
             <StackLayout Orientation="Horizontal">
-                <Button Margin="0,5,0,0" Text="Select image" Clicked="SelectImage_OnClicked" CornerRadius="10" BackgroundColor="SandyBrown"></Button>
+                <Button Margin="0,5,0,0" Text="Select image" Command="{Binding SelectImageCommand}" CornerRadius="10" BackgroundColor="SandyBrown"></Button>
             </StackLayout>
             <StackLayout BindableLayout.ItemsSource="{Binding RestaurantImages}">
                 <BindableLayout.ItemTemplate>

@@ -15,7 +15,7 @@ namespace RestMap.Model.Zomato.API_Service
 
         public ZomatoClient()
         {
-            _client = new HttpClient(new AndroidClientHandler())
+            _client = new HttpClient()
             {
                 BaseAddress = new Uri(ZomatoSettings.BASE_URL)
             };

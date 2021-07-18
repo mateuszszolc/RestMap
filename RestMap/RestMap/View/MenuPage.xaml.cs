@@ -13,29 +13,19 @@ namespace RestMap.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MenuPage : ContentPage
     {
-        Model.Zomato.Restaurant.RestaurantContainer _resContainer;
-        private MenuViewModel menuViewModel;
+        private readonly MenuViewModel _menuViewModel;
 
-        public MenuPage(Model.Zomato.Restaurant.RestaurantContainer _resContainer)
+        public MenuPage()
         {
             InitializeComponent();
-            this._resContainer = _resContainer;
-            menuViewModel = new MenuViewModel();
-           
-            BindingContext = menuViewModel;
-
+            _menuViewModel = new MenuViewModel();
+            BindingContext = _menuViewModel;
         }
 
         protected override  void OnAppearing()
         {
             base.OnAppearing();
-
-            menuViewModel.GetDailyMenus();
-        }
-
-        private async void ShowMenu_OnClicked(object sender, EventArgs e)
-        {
-            await Browser.OpenAsync(menuViewModel.RestaurantContainer.MenuUrl);
+            _menuViewModel.GetDailyMenus();
         }
     }
 }

@@ -19,7 +19,7 @@
             <BoxView Margin="0, 5, 0, 0" HeightRequest="1" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="#E4E4E4"/>
             <Label Margin="0,5,0,5" Text="Comments" FontSize="20" FontAttributes="Bold"></Label>
             <StackLayout Orientation="Horizontal">
-                <Button Margin="0,5,0,0" Text="Add Comment" Clicked="AddComment_OnClicked" CornerRadius="10" BackgroundColor="DodgerBlue"></Button>
+            <Button Margin="0,5,0,0" Text="Add Comment" Command="{Binding NavigateToAddCommentPageCommand}" CornerRadius="10" BackgroundColor="DodgerBlue"></Button>
             </StackLayout>
         <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
                 <StackLayout BindableLayout.ItemsSource="{Binding UserReviews}" Orientation="Vertical">

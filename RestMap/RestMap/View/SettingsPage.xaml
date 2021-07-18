@@ -9,7 +9,35 @@
                    FontAttributes="Bold"
                  />
         <BoxView Margin="0, 5, 0, 0" HeightRequest="1" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="#E4E4E4"/>
-        <ListView x:Name="SettingsListView" ItemSelected="SettingsListView_ItemSelected"></ListView>
+        <ListView x:Name="SettingsListView" ItemsSource="{Binding SettingsModels}" SelectedItem="{Binding SettingsModel, Mode=TwoWay}" SeparatorVisibility="Default" RowHeight="60">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+                            <Grid Padding="10" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.RowSpan="2"
+                                       Source="{Binding Image}"
+                                       Aspect="AspectFill"
+                                       HeightRequest="45"
+                                       WidthRequest="45" />
+                                <Label Grid.Column="1"
+                                       Text="{Binding Name}"
+                                       FontAttributes="Bold"
+                                       FontSize="18"
+                                       Margin="0,5,0,0"
+                                       />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
     </StackLayout>
 
 </ContentPage>

@@ -95,7 +95,7 @@ namespace RestMap.Model.Application
         {
             
                 var applicationUsers = (await App.MobileServiceClient.GetTable<ApplicationUser>()
-                    .Where(x => (x.Email == appUser.Email) || (x.Username == appUser.Username))
+                    .Where(x => ((x.Email == appUser.Email) || (x.Username == appUser.Username)) && x.IsActive)
                     .ToListAsync());
 
                 if (applicationUsers.Count > 0)
@@ -106,6 +106,13 @@ namespace RestMap.Model.Application
                 return false;
         }
 
+        public static async void RemoveAccount(ApplicationUser appUser)
+        {
+            appUser.IsActive = false;
+
+            await App.MobileServiceClient.GetTable<ApplicationUser>().UpdateAsync(appUser);
+        }
+
         public static async Task<bool> Login(string email, string password)
         {
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
@@ -114,7 +121,7 @@ namespace RestMap.Model.Application
             }
 
             var applicationUser = (await App.MobileServiceClient.GetTable<ApplicationUser>()
-                    .Where(x => x.Email == email)
+                    .Where(x => x.Email == email && x.IsActive == true)
                     .ToListAsync())
                     .FirstOrDefault();
 

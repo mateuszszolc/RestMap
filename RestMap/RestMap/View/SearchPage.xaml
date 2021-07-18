@@ -3,8 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RestMap.View.SearchPage">
     <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-        <SearchBar Placeholder="Szukaj" TextChanged="InputView_OnTextChanged"></SearchBar>
-        <ListView x:Name="SearchListView" ItemSelected="SearchListView_OnItemSelected" SeparatorVisibility="Default" RowHeight="60">
+        <SearchBar Placeholder="Search..." Text="{Binding SearchText, Mode=TwoWay}" ></SearchBar>
+        <ListView x:Name="SearchListView" ItemsSource="{Binding LocationSuggestions, Mode=TwoWay}" 
+                  SelectedItem="{Binding LocationSuggestion, Mode=TwoWay}" SeparatorVisibility="Default" RowHeight="60">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell >

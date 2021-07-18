@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using RestMap.Helpers;
 using RestMap.Model.Application;
 using RestMap.Model.Zomato;
+using RestMap.Model.Zomato.API_Service;
 using RestMap.Model.Zomato.Restaurant;
 using RestMap.View;
 using Xamarin.Essentials;
@@ -41,18 +42,19 @@ namespace RestMap.ViewModel
             }
         }
 
+        private readonly ZomatoServiceWorker _serviceWorker;
+
         public RestaurantDetailsViewModel()
         {
+            _serviceWorker = new ZomatoServiceWorker();
             NavigateToPhotosPageCommand = new Command(async () => await NavigateToPhotosPage());
             NavigateToReviewsPageCommand = new Command(async () => await NavigateToReviewsPage());
-            NavigateToMenuPageCommand =
-                new Command<RestaurantContainer>(async (param) => await NavigateToMenuPage(param));
+            NavigateToMenuPageCommand = new Command(async () => await NavigateToMenuPage());
             OpenPhoneDialerCommand = new Command<RestaurantContainer>((param) => OpenPhoneDialer(param));
             OpenGoogleMapsCommand = new Command<RestaurantContainer>(async (param) => await OpenGoogleMaps(param));
             OpenBrowserCommand = new Command<RestaurantContainer>(async (param) => await OpenBrowser(param));
             SetFavouriteRestaurantCommand = new Command<RestaurantContainer>(async (param) => await SetFavouriteRestaurant(param));
             RestaurantContainer = new RestaurantContainer();
-           // CheckIfIsRestaurantFavourite();
         }
 
         public async Task AnimatePancakeView(PancakeView view)
@@ -63,7 +65,7 @@ namespace RestMap.ViewModel
 
         public async Task GetRestaurantContainer(string id)
         {
-            RestaurantContainer = await RestaurantDetailsService.GetRestaurantDetails(id);
+            RestaurantContainer = await _serviceWorker.GetRestaurantDetailsAsync(id);
             App.RestaurantsContainer = this.RestaurantContainer;
         }
         public async void CheckIfIsRestaurantFavourite()
@@ -107,9 +109,9 @@ namespace RestMap.ViewModel
             await App.Current.MainPage.Navigation.PushAsync(new ReviewsPage());
         }
 
-        public async Task NavigateToMenuPage(RestaurantContainer param)
+        public async Task NavigateToMenuPage()
         {
-            await App.Current.MainPage.Navigation.PushAsync(new MenuPage(param));
+            await App.Current.MainPage.Navigation.PushAsync(new MenuPage());
         }
 
         public void OpenPhoneDialer(RestaurantContainer param)

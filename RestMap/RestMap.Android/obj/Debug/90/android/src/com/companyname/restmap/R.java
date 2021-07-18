@@ -4830,13 +4830,17 @@ public final class R {
     public static final int pin=0x7f070095;
     public static final int register_restaurant=0x7f070096;
     public static final int route=0x7f070097;
-    public static final int settings=0x7f070098;
-    public static final int star_rate=0x7f070099;
-    public static final int telephone=0x7f07009a;
-    public static final int tooltip_frame_dark=0x7f07009b;
-    public static final int tooltip_frame_light=0x7f07009c;
-    public static final int username=0x7f07009d;
-    public static final int website=0x7f07009e;
+    public static final int sett_comment=0x7f070098;
+    public static final int sett_delete=0x7f070099;
+    public static final int sett_favourite=0x7f07009a;
+    public static final int sett_image=0x7f07009b;
+    public static final int settings=0x7f07009c;
+    public static final int star_rate=0x7f07009d;
+    public static final int telephone=0x7f07009e;
+    public static final int tooltip_frame_dark=0x7f07009f;
+    public static final int tooltip_frame_light=0x7f0700a0;
+    public static final int username=0x7f0700a1;
+    public static final int website=0x7f0700a2;
   }
   public static final class id {
     public static final int ALT=0x7f080000;

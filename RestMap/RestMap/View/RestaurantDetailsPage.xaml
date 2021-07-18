@@ -61,7 +61,9 @@
                             <pv:PancakeView BackgroundColor="#E9E9E9" HeightRequest="50" WidthRequest="50" CornerRadius="30" HorizontalOptions="Center">
                                 <Image WidthRequest="16" HeightRequest="16" Source="heart_outline.png" HorizontalOptions="Center" VerticalOptions="Center" x:Name="FavImage">
                                     <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding SetFavouriteRestaurantCommand}" CommandParameter="{Binding RestaurantContainer}" NumberOfTapsRequired="1"/>
+                                        <TapGestureRecognizer Command="{Binding SetFavouriteRestaurantCommand}" 
+                                                              CommandParameter="{Binding RestaurantContainer}" 
+                                                              NumberOfTapsRequired="1"/>
                                     </Image.GestureRecognizers>
                                     <Image.Triggers>
                                         <DataTrigger Binding="{Binding IsRestaurantFavourite}" TargetType="Image" Value="True">
@@ -87,7 +89,7 @@
                     <Label Text="{Binding RestaurantContainer.Timings}"  FontSize="15" FontFamily="ThemeFontRegular" TextColor="#000000"/>
                     <Label Text="AVERANGE PRICE FOR TWO"  FontSize="15" FontFamily="ThemeFontRegular" TextColor="#c1c1c1"/>
                     <Label Text="{Binding RestaurantContainer.AverageCost}"  FontSize="15" FontFamily="ThemeFontRegular" TextColor="#000000"/>
-                    <Label Text="ONLINE DELIVERY"  FontSize="15" FontFamily="ThemeFontRegular" TextColor="#c1c1c1"/>
+                    <Label Text="HIGHIGHTS"  FontSize="15" FontFamily="ThemeFontRegular" TextColor="#c1c1c1"/>
                     <StackLayout Orientation="Vertical"  BindableLayout.ItemsSource="{Binding RestaurantContainer.Highlights}">
                         <BindableLayout.ItemTemplate>
                             <DataTemplate>
@@ -99,7 +101,7 @@
                         </BindableLayout.ItemTemplate>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal" Margin="0,0,0,10" HorizontalOptions="Center" Spacing="10">
-                        <Button Text="Menu" Command="{Binding NavigateToMenuPageCommand}" CommandParameter="{Binding RestaurantContainer}" BackgroundColor="Orange"  CornerRadius="10"></Button>
+                        <Button Text="Menu" Command="{Binding NavigateToMenuPageCommand}" BackgroundColor="Orange"  CornerRadius="10"></Button>
                         <Button Text="Photos" Command="{Binding NavigateToPhotosPageCommand}"  BackgroundColor="SeaGreen"  CornerRadius="10"></Button>
                         <Button Text="Reviews" Command="{Binding NavigateToReviewsPageCommand}" BackgroundColor="DodgerBlue"  CornerRadius="10"></Button>
                     </StackLayout>

@@ -48,11 +48,13 @@ namespace RestMap.ViewModel
             }
         }
 
-        public  void AddComment(RestaurantComment restaurantComment)
+        public async void AddComment(RestaurantComment restaurantComment)
         {
             try
             {
                 RestaurantComment.InsertRestaurantComment(restaurantComment);
+                await App.Current.MainPage.Navigation.PopAsync();
+
             }
             catch (Exception e)
             {

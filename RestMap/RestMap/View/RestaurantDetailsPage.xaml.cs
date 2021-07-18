@@ -6,6 +6,8 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Android.Telecom;
+using RestMap.Model.Zomato.Search;
 using RestMap.ViewModel;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -16,16 +18,13 @@ namespace RestMap.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RestaurantDetailsPage : ContentPage
     {
-        string _id;
-        Model.Zomato.Restaurant.RestaurantContainer _resContainer;
-
         private readonly RestaurantDetailsViewModel _restaurantDetailsViewModel;
-
+        private string _id;
         public RestaurantDetailsPage(string id)
         {
             InitializeComponent();
-            _id = id;
             _restaurantDetailsViewModel = new RestaurantDetailsViewModel();
+            _id = id;
         }
 
         protected override async void OnAppearing()
@@ -35,14 +34,6 @@ namespace RestMap.View
             await _restaurantDetailsViewModel.GetRestaurantContainer(_id);
             _restaurantDetailsViewModel.CheckIfIsRestaurantFavourite();
             BindingContext = _restaurantDetailsViewModel;
-
-            // DetailsView.TranslationY = 600;
-            // await DetailsView.TranslateTo(0, 0, 500, Easing.SinInOut);
-            // _resContainer = await RestaurantDetailsService.GetRestaurantDetails(_id);
-            // App.RestaurantsContainer = _resContainer;
-            //BindingContext = _resContainer;
-
-
         }
 
        

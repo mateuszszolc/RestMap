@@ -23,5 +23,7 @@ namespace RestMap.View
             _loginViewModel = new LoginViewModel();
             BindingContext = _loginViewModel;
         }
+
+        protected override bool OnBackButtonPressed() => false;
     }
 }

@@ -6,9 +6,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Android.Telecom;
 using RestMap.Model.Zomato.Locations;
 using RestMap.Model.Zomato.Search;
+using RestMap.ViewModel;
 using Xamarin.Forms;
+using Xamarin.Forms.PancakeView;
 using Xamarin.Forms.Xaml;
 
 namespace RestMap.View
@@ -16,97 +19,30 @@ namespace RestMap.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RestaurantListPage : ContentPage
     {
-        
-        
 
-        LocationDetailsContainer locationDetailsContainer = new LocationDetailsContainer();
-        static ZomatoClient zomatoClient = new ZomatoClient();
-        ZomatoService zomatoService = new ZomatoService(zomatoClient);
-        private List<NearbyRestaurant> nearbyRestaurants = new List<NearbyRestaurant>();
-
-        private LocationSuggestion _locationSuggestion;
-       
-        
-
-        public RestaurantListPage(LocationSuggestion locationSuggestion)
+        private readonly RestaurantListViewModel _restaurantListViewModel;
+        public RestaurantListPage()
         {
             InitializeComponent();
-            _locationSuggestion = locationSuggestion;
-            LocationLabel.Text = $"{locationSuggestion.CityName}, {locationSuggestion.CountryName}";
-            //GetRestaurants();
+            _restaurantListViewModel = new RestaurantListViewModel();
+            BindingContext = _restaurantListViewModel;
         }
 
 
-        protected override async void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
-            //GetRestaurants();
-            if (true)
-                BindingContext = await SearchService.SearchRestaurantsAsync(_locationSuggestion.EntityId.ToString(),
-                    _locationSuggestion.EntityType);
-            //BindingContext = App.NearbyRestaurants;
-            else
-                await Navigation.PushAsync(new NotFoundPage());
+            _restaurantListViewModel.GetRestaurants();
         }
 
-
-       
-
-        public async void GetRestaurants()
+        private async void NavigateToSpecificRestaurantPage(object sender, EventArgs e)
          {
-             locationDetailsContainer = await zomatoService.GetLocationDetailsByCoordinatesAsync("52.237049", "21.017532");            
+            var choosenRestaurant = ((sender as Xamarin.Forms.View).BindingContext as Model.Zomato.Search.RestaurantContainer).Restaurant;
 
-             nearbyRestaurants = locationDetailsContainer.NearbyRestaurants;            
-         }
+            App.ChoosenRestaurant = choosenRestaurant;
 
-        public void SetRestaurants()
-        {
-            //nearbyRestaurants = await GetRestaurants();
+            await Navigation.PushAsync(new RestaurantDetailsPage(App.ChoosenRestaurant.Id));
         }
-
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-        {
-            var view = sender as Xamarin.Forms.View;
-            var parent = view.Parent as StackLayout;
-
-            foreach (var child in parent.Children)
-            {
-                VisualStateManager.GoToState(child, "Normal");
-                ChangeTextColor(child, "#707070");
-            }
-
-            VisualStateManager.GoToState(view, "Selected");
-            ChangeTextColor(view, "#FFFFFF");
-        }
-
-        private void ChangeTextColor(Xamarin.Forms.View child, string hexColor)
-        {
-            var txtCtrl = child.FindByName<Label>("FilterSettingsLabel");
-
-            if (txtCtrl != null)
-                txtCtrl.TextColor = Color.FromHex(hexColor);
-        }
-
-        
-
-         private async void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
-         {
-             string property =
-                 ((sender as Xamarin.Forms.View).BindingContext as Model.Zomato.Search.RestaurantContainer).Restaurant
-                 .Id;
-            await Navigation.PushAsync(new RestaurantDetailsPage(property));
-          }
-
-
-         private async void Button_OnClicked(object sender, EventArgs e)
-         {
-             await Navigation.PushAsync(new SearchPage());
-         }
-
-         private async void Settings_OnClicked(object sender, EventArgs e)
-         {
-            await Navigation.PushAsync(new SettingsPage());
-         }
     }
    
 }

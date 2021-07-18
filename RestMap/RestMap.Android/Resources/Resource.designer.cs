@@ -17067,26 +17067,38 @@ namespace RestMap.Droid
 			// aapt resource value: 0x7F070097
 			public const int route = 2131165335;
 			
+			// aapt resource value: 0x7F07009C
+			public const int settings = 2131165340;
+			
 			// aapt resource value: 0x7F070098
-			public const int settings = 2131165336;
+			public const int sett_comment = 2131165336;
 			
 			// aapt resource value: 0x7F070099
-			public const int star_rate = 2131165337;
+			public const int sett_delete = 2131165337;
 			
 			// aapt resource value: 0x7F07009A
-			public const int telephone = 2131165338;
+			public const int sett_favourite = 2131165338;
 			
 			// aapt resource value: 0x7F07009B
-			public const int tooltip_frame_dark = 2131165339;
-			
-			// aapt resource value: 0x7F07009C
-			public const int tooltip_frame_light = 2131165340;
+			public const int sett_image = 2131165339;
 			
 			// aapt resource value: 0x7F07009D
-			public const int username = 2131165341;
+			public const int star_rate = 2131165341;
 			
 			// aapt resource value: 0x7F07009E
-			public const int website = 2131165342;
+			public const int telephone = 2131165342;
+			
+			// aapt resource value: 0x7F07009F
+			public const int tooltip_frame_dark = 2131165343;
+			
+			// aapt resource value: 0x7F0700A0
+			public const int tooltip_frame_light = 2131165344;
+			
+			// aapt resource value: 0x7F0700A1
+			public const int username = 2131165345;
+			
+			// aapt resource value: 0x7F0700A2
+			public const int website = 2131165346;
 			
 			static Drawable()
 			{

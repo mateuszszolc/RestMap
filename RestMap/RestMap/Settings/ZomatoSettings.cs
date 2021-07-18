@@ -6,7 +6,7 @@ namespace RestMap.Settings
 {
     public static class ZomatoSettings
     {
-        public static readonly string API_KEY = "e4de21a416ae2c8d522b7b47f71c234e";
+        public static readonly string API_KEY = "api_key";
 
         public static readonly string BASE_URL = "https://developers.zomato.com/api/v2.1/";
 

@@ -67,8 +67,20 @@ namespace RestMap.Model.Application
         public static async Task<List<RestaurantComment>> GetRestaurantComments()
         {
             return await App.MobileServiceClient.GetTable<RestaurantComment>()
-                .Where(x => (x.ApplicationUserId == App.ApplicationUser.Id) && (x.RestaurantId == App.RestaurantsContainer.Id))
+                .Where(x => (x.RestaurantId == App.RestaurantsContainer.Id))
                 .ToListAsync();
+        }
+
+        public static async Task<List<RestaurantComment>> GetRestaurantCommentsByUser()
+        {
+            return await App.MobileServiceClient.GetTable<RestaurantComment>()
+                .Where(x => (x.ApplicationUserId == App.ApplicationUser.Id))
+                .ToListAsync();
+        }
+
+        public static async void RemoveRestaurantComment(RestaurantComment comment)
+        {
+            await App.MobileServiceClient.GetTable<RestaurantComment>().DeleteAsync(comment);
         }
 
 

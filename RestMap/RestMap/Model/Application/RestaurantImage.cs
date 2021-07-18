@@ -66,7 +66,7 @@ namespace RestMap.Model.Application
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public static async void AddRestaurantImage(string url)
+        public static async Task AddRestaurantImage(string url)
         {
             RestaurantImage restaurantImage = new RestaurantImage()
             {
@@ -76,14 +76,25 @@ namespace RestMap.Model.Application
             };
 
             await App.MobileServiceClient.GetTable<RestaurantImage>().InsertAsync(restaurantImage);
-
         }
 
         public static async Task<List<RestaurantImage>> GetRestaurantImages()
         {
             return await App.MobileServiceClient.GetTable<RestaurantImage>()
-                .Where(x => (x.ApplicationUserId == App.ApplicationUser.Id) && (x.RestaurantId == App.RestaurantsContainer.Id))
+                .Where(x => (x.RestaurantId == App.RestaurantsContainer.Id))
                 .ToListAsync();
+        }
+
+        public static async Task<List<RestaurantImage>> GetRestaurantImagesByUser()
+        {
+            return await App.MobileServiceClient.GetTable<RestaurantImage>()
+                .Where(x => (x.ApplicationUserId == App.ApplicationUser.Id))
+                .ToListAsync();
+        }
+
+        public static async void RemoveRestaurantImage(RestaurantImage image)
+        {
+            await App.MobileServiceClient.GetTable<RestaurantImage>().DeleteAsync(image);
         }
     }
 }

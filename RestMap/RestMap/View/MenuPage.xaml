@@ -19,7 +19,7 @@
         </StackLayout>
         <BoxView Margin="0, 5, 0, 0" HeightRequest="1" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="#E4E4E4"/>
         <StackLayout Orientation="Horizontal">
-            <Button Margin="0, 5, 0, 0" Clicked="ShowMenu_OnClicked" Text="Show Menu" BackgroundColor="Orange" CornerRadius="10"></Button>
+                <Button Margin="0, 5, 0, 0" Command="{Binding OpenMenuPageCommand}" CommandParameter="{Binding RestaurantContainer}" Text="Show Menu" BackgroundColor="Orange" CornerRadius="10"></Button>
         </StackLayout>
         <BoxView Margin="0, 5, 0, 0" HeightRequest="1" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="#E4E4E4"/>
         <Label Margin="0, 5, 0, 0" Text="Daily Menu" FontSize="20" FontAttributes="Bold" ></Label>

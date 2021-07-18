@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RestMap.View.UserImagesPage"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
+    <StackLayout Orientation="Vertical" Padding="10">
+        <Label Text="My Images"
+               FontSize="22"
+               FontAttributes="Bold"
+        />
+        <BoxView Margin="0, 5, 0, 0" HeightRequest="1" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="#E4E4E4"/>
+        <ListView x:Name="CommentsListView" ItemsSource="{Binding RestaurantImages}" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell >
+                        <StackLayout>
+                            <forms:CachedImage x:Name="CachedImage" Aspect="AspectFit" HeightRequest="250" WidthRequest="250" Source="{Binding ImageUrl}">
+                            </forms:CachedImage>
+                            <Button Text="Remove"  BackgroundColor="White" TextColor="Blue" Clicked="RemoveBtnClicked"></Button>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

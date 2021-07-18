@@ -12,25 +12,20 @@ namespace RestMap.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ReviewsPage : ContentPage
     {
-        private ReviewsViewModel reviewsViewModel;
+        private readonly ReviewsViewModel _reviewsViewModel;
 
         public ReviewsPage()
         {
             InitializeComponent();
-            reviewsViewModel = new ReviewsViewModel();
-            BindingContext = reviewsViewModel;
+            _reviewsViewModel = new ReviewsViewModel();
+            BindingContext = _reviewsViewModel;
         }
 
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-
-            await reviewsViewModel.MergeReviews();
+            await _reviewsViewModel.MergeReviews();
         }
 
-        private async void AddComment_OnClicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new AddCommentPage());
-        }
     }
 }
